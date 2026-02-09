@@ -1,0 +1,136 @@
+---
+import {Image} from "astro:assets"
+import {cn} from "../../lib/utils.ts";
+import planet from "../../assets/planet.webp"
+import logo from "../../assets/logo.webp"
+
+const navLinks = [
+    {name: 'Inicio', href: '/'},
+    {name: 'Sobre el proyecto', href: '/sobre-el-proyecto'},
+    {name: '¿Cómo funciona?', href: '/#como-funciona'},
+    {name: 'Beneficios', href: '/#beneficios'},
+    {name: 'Contacto', href: '/#contacto'},
+]
+
+const currentPath = Astro.url.pathname
+---
+
+<header id="main-header" class="bg-white fixed top-0 left-0 right-0 z-50 border-b border-gray-200/80">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a href="/" class="hidden md:flex items-center gap-2 text-xl font-bold text-dark">
+                <Image src={logo} alt="EcoNutrix Logo Completo" class="h-12 w-auto"/>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-2">
+                {navLinks.map(link => {
+                    const isActive = (link.href === "/")
+                        ? (currentPath === "/")
+                        : currentPath.startsWith(link.href);
+
+                    return (
+                            <a href={link.href}
+                               class={cn("px-4 py-2 rounded-t-lg font-semibold transition-colors duration-300 relative", {
+                                   "bg-accent/10 text-accent": isActive,
+                                   "hover:bg-gray-100 text-gray-800": !isActive
+                               })}
+                            >
+                                {link.name}
+                                {isActive &&
+                                        <span
+                                                class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-1 bg-linear-to-r from-[#8B5CF6CC] to-[#A34DA3CC]"></span>}
+                            </a>
+                    )
+                })}
+            </nav>
+
+            <div class="md:hidden">
+                <button id="menu-open-btn" aria-label="Abrir menú" class="p-2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M20 18.25C20.4142 18.25 20.75 18.5858 20.75 19C20.75 19.4142 20.4142 19.75 20 19.75H4C3.58579 19.75 3.25 19.4142 3.25 19C3.25 18.5858 3.58579 18.25 4 18.25H20ZM20 11.25C20.4142 11.25 20.75 11.5858 20.75 12C20.75 12.4142 20.4142 12.75 20 12.75H4C3.58579 12.75 3.25 12.4142 3.25 12C3.25 11.5858 3.58579 11.25 4 11.25H20ZM20 4.25C20.4142 4.25 20.75 4.58579 20.75 5C20.75 5.41421 20.4142 5.75 20 5.75H4C3.58579 5.75 3.25 5.41421 3.25 5C3.25 4.58579 3.58579 4.25 4 4.25H20Z"
+                                fill="#332890"/>
+                    </svg>
+                </button>
+                <button id="menu-close-btn" aria-label="Cerrar menú" class="p-2 hidden">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M12.5454 0.54541L6.54541 6.54541L12.5454 0.54541ZM6.54541 6.54541L0.54541 12.5454L6.54541 6.54541ZM6.54541 6.54541L12.5454 12.5454L6.54541 6.54541ZM6.54541 6.54541L0.54541 0.54541L6.54541 6.54541Z"
+                                fill="#241C66"/>
+                        <path
+                                d="M12.5454 0.54541L6.54541 6.54541M6.54541 6.54541L0.54541 12.5454M6.54541 6.54541L12.5454 12.5454M6.54541 6.54541L0.54541 0.54541"
+                                stroke="#332890" stroke-width="1.09091" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <a href="/" class="md:hidden">
+                <Image src={planet} alt="EcoNutrix Icono" class="h-10 w-auto"/>
+            </a>
+        </div>
+
+        <div id="mobile-menu-panel" class="fixed top-0 left-0 h-full w-4/5 max-w-sm bg-white shadow-xl z-60
+                                    transform -translate-x-full transition-transform duration-300 ease-in-out
+                                    flex flex-col">
+            <div class="p-4 border-b border-gray-200">
+                <Image src={planet} alt="EcoNutrix Icono" class="h-10 w-auto"/>
+            </div>
+            <nav>
+                {navLinks.map(link => {
+                    const isActive = link.href === currentPath;
+                    return (
+                            <a
+                                    href={link.href}
+                                    class={cn("block w-full text-left px-4 py-3 font-semibold relative", {
+                                        'bg-purple-100 text-purple-700': isActive,
+                                        'text-gray-700 hover:bg-gray-100': !isActive
+                                    })}
+                            >{link.name}
+                                {isActive &&
+                                        <span
+                                                class="absolute bottom-0 left-0 -translate-x-1/2 w-1 h-full bg-linear-to-r from-[#8B5CF6CC] to-[#A34DA3CC]"></span>}
+                            </a>
+                    )
+                })}
+            </nav>
+        </div>
+    </div>
+
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-55 hidden"></div>
+</header>
+
+<script>
+
+    document.addEventListener("astro:page-load", () => {
+        const openBtn = document.getElementById('menu-open-btn');
+        const closeBtn = document.getElementById('menu-close-btn');
+        const panel = document.getElementById('mobile-menu-panel');
+        const overlay = document.getElementById('mobile-menu-overlay');
+
+        const openMenu = () => {
+            openBtn?.classList.add('hidden');
+            closeBtn?.classList.remove('hidden');
+            panel?.classList.remove('-translate-x-full');
+            overlay?.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        };
+
+        const closeMenu = () => {
+            openBtn?.classList.remove('hidden');
+            closeBtn?.classList.add('hidden');
+            panel?.classList.add('-translate-x-full');
+            overlay?.classList.add('hidden');
+            document.body.style.overflow = '';
+        };
+
+        openBtn?.addEventListener('click', openMenu);
+        closeBtn?.addEventListener('click', closeMenu);
+        overlay?.addEventListener('click', closeMenu);
+
+        panel?.addEventListener('click', (e) => {
+            if ((e.target as HTMLElement).tagName === 'A') {
+                closeMenu();
+            }
+        });
+    })
+</script>

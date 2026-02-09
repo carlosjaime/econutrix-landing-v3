@@ -1,0 +1,74 @@
+---
+import image1 from "../../assets/botar.webp";
+import image2 from "../../assets/vegetales-desechados.webp";
+import image3 from "../../assets/basural.webp";
+import HeroSlide from "./HeroSlide.astro";
+---
+<section id="hero" class="min-h-screen flex items-center overflow-hidden relative">
+    <HeroSlide image={image1} alt="Persona tirando comida a la basura">
+        <div slot="message" class="text-white w-full">
+            <h3 class="uppercase font-bold text-2xl md:text-5xl">Econutrix:</h3>
+            <p class="text-2xl md:text-5xl mt-3 leading-[120%]"><strong>App</strong> que Planifica tus Menús, Optimiza tu
+                Despensa y
+                <strong>¡Evita el Desperdicio de Alimentos!</strong></p>
+        </div>
+    </HeroSlide>
+    <HeroSlide image={image2} alt="Vegetales desechados en un compost" class="opacity-0">
+        <div slot="message" class="text-white">
+            <p class="text-2xl md:text-5xl mt-3 leading-[120%]">Ahorra, lleva el <strong>control de calorías</strong> y evita
+                el <strong>desperdicio
+                    de alimentos</strong>.</p>
+        </div>
+    </HeroSlide>
+    <HeroSlide image={image3} alt="Un basural con pájaros volando" class="opacity-0">
+        <div slot="message" class="text-white">
+            <p class="text-2xl md:text-5xl mt-3 leading-[120%]">Más de <strong>1.000 millones de platos de alimentos</strong>
+                se están
+                desperdiciando en el mundo.</p>
+        </div>
+    </HeroSlide>
+</section>
+
+<script>
+    import gsap from "gsap"
+
+    document.addEventListener("astro:page-load", () => {
+        const hero = document.getElementById("hero")
+        if (!hero) return
+
+        const slides = Array.from(hero.children)
+        if (slides.length === 0) return
+
+        const slideDuration = 4
+        const fadeDuration = 1.5
+
+        gsap.set(slides.slice(1), {autoAlpha: 0, zIndex: 0})
+        gsap.set(slides[0], {autoAlpha: 1, zIndex: 1})
+
+        const tl = gsap.timeline({repeat: -1, paused: false})
+
+        slides.forEach((slide, i) => {
+            const nextSlide = slides[(i + 1) % slides.length]
+
+            tl.to({}, {duration: slideDuration})
+                .to(slide, {
+                    autoAlpha: 0,
+                    duration: fadeDuration,
+                    ease: "power2.inOut",
+                    zIndex: 0
+                })
+                .to(nextSlide, {
+                    autoAlpha: 1,
+                    duration: fadeDuration,
+                    ease: "power2.inOut",
+                    zIndex: 1
+                }, "<")
+        })
+
+        const cleanup = () => {
+            tl.kill()
+            document.removeEventListener("astro:before-swap", cleanup)
+        }
+        document.addEventListener("astro:before-swap", cleanup)
+    })
+</script>

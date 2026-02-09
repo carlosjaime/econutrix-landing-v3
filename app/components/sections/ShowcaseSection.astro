@@ -1,0 +1,32 @@
+---
+import {Image} from "astro:assets";
+import GridImage from "../../assets/grid.webp"
+import featureImage from "../../assets/card-float-econutrix.webp";
+---
+
+<section class="relative bg-linear-to-b from-[#332890] to-[#A34DA3] text-white overflow-hidden">
+    <div class="absolute bottom-0 w-2/3">
+        <Image src={GridImage} alt="" aria-hidden="true" class="w-full h-full object-cover"/>
+    </div>
+
+    <div class="mt-24">
+        <div class="w-full flex justify-between">
+            <div class="flex mt-12 flex-col gap-6 px-24">
+                <h2 class="text-6xl font-bold">Con escaner inteligente,</h2>
+                <p class="text-3xl">y una foto de la boleta, la app digitaliza ingredientes y calorías.</p>
+                <p class="text-xl">Evita el desperdicio de alimentos y comienza a <strong>cuidar tu nutrición y
+                    salud.</strong></p>
+            </div>
+            <div>
+                <Image
+                        src={featureImage}
+                        alt=""
+                        aria-hidden="true"
+                        class="rounded-tl-2xl shadow-2xl transform transition-transform duration-300"
+                        loading="lazy"
+                        format="webp"
+                />
+            </div>
+        </div>
+    </div>
+</section>

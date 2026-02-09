@@ -1,0 +1,100 @@
+---
+import FeatureCard from "../ui/FeatureCard.astro";
+---
+
+<section id="como-funciona" class="py-20 ">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-center mb-12 text-gray-800">
+            ¿Cómo funciona EcoNutrix?
+        </h2>
+
+        <div
+                class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 -mx-4 px-4 md:mx-0 md:px-0 pb-8 md:pb-0">
+            <FeatureCard title="Mejora tu Nutrición">
+                <div slot="icon">
+                    <svg width="57" height="49" viewBox="0 0 57 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M24.2571 45.7424C16.7337 40.1166 1.82855 27.2547 1.82855 15.6804C1.82855 8.03025 7.44258 1.82857 15.1619 1.82857C19.1619 1.82857 23.1619 3.1619 28.4952 8.49523C33.8286 3.1619 37.8286 1.82857 41.8285 1.82857C49.5477 1.82857 55.1619 8.03025 55.1619 15.6804C55.1619 27.2547 40.2568 40.1166 32.7334 45.7424C30.2016 47.6355 26.7888 47.6355 24.2571 45.7424Z"
+                                stroke="#6B6A74" stroke-width="3.65714" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <p slot="description" class="text-base leading-relaxed">
+                    Come de forma <strong>saludable</strong> y equilibrada. Aprende y recibe recomendaciones basadas en fuentes
+                    verificadas <strong>para
+                    mejorar tu nutrición.</strong>
+                </p>
+            </FeatureCard>
+            <FeatureCard title="Indicador de Impacto ambiental">
+                <div slot="icon">
+                    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M6.52625 0.00375366C7.70102 -0.0127936 9.32712 0.0196247 11.1268 0.219574C14.614 0.607046 19.2283 1.66964 22.2479 4.6893C26.1546 8.59606 26.3477 14.8057 22.8319 18.9432C22.9468 19.1197 23.0754 19.3229 23.2137 19.5536C23.7641 20.4708 24.48 21.8165 25.1893 23.5897C25.7682 25.0367 26.3397 26.7664 26.8163 28.7772C27.0968 28.2832 27.3822 27.8194 27.6688 27.3895C28.5806 26.0219 29.4943 24.97 30.1874 24.2538C30.4082 24.0256 30.6085 23.8318 30.7792 23.6707C28.4935 20.0703 28.9194 15.2448 32.0604 12.1034C34.7211 9.44276 38.7611 8.52389 41.7635 8.19028C43.3209 8.01725 44.7266 7.98848 45.7421 8.00278C46.2515 8.00995 46.6673 8.02821 46.9598 8.04477C47.1061 8.05305 47.2218 8.06113 47.3036 8.06723C47.3443 8.07027 47.3769 8.0731 47.4003 8.07504C47.4118 8.076 47.4214 8.07638 47.4286 8.077C47.4322 8.07731 47.4359 8.07775 47.4384 8.07797H47.4423C47.4423 8.08417 47.4339 8.187 47.2792 9.8895L47.4432 8.07797C48.4047 8.16538 49.1673 8.92801 49.2548 9.8895L47.2626 10.0702C49.2543 9.88907 49.2547 9.88992 49.2548 9.89047V9.89438C49.255 9.89682 49.2554 9.90074 49.2557 9.90414C49.2563 9.91124 49.2568 9.92118 49.2577 9.93246C49.2596 9.95584 49.2625 9.98866 49.2655 10.0291C49.2716 10.1109 49.2797 10.2269 49.288 10.3729C49.3045 10.6654 49.3228 11.0815 49.33 11.5907C49.3442 12.6061 49.3155 14.012 49.1425 15.5692C48.8088 18.5717 47.8899 22.6117 45.2294 25.2723C42.0692 28.4321 37.2047 28.8435 33.5975 26.5116C33.4561 26.6429 33.2736 26.8177 33.0624 27.036C32.5056 27.6113 31.7517 28.4762 30.9969 29.6082C29.7285 31.5109 28.4766 34.1347 28.1083 37.3983C37.402 37.9591 45.6935 42.1995 51.4891 48.6649C52.226 49.4873 52.1571 50.7519 51.3348 51.4891C50.5125 52.2261 49.2479 52.1569 48.5106 51.3348C43.0144 45.2034 34.9709 41.3329 25.9999 41.3329C17.0288 41.3329 8.98554 45.2034 3.48914 51.3348C2.75194 52.157 1.48736 52.226 0.664917 51.4891C-0.157498 50.7519 -0.226477 49.4874 0.51062 48.6649C6.31986 42.1845 14.6359 37.9383 23.9559 37.3934C23.7309 31.9705 22.5923 27.8669 21.4755 25.075C20.8516 23.5156 20.2336 22.3614 19.7841 21.6122C19.753 21.5603 19.7207 21.5117 19.6913 21.4637C15.7185 23.5475 10.6947 22.9212 7.35535 19.5819C4.3358 16.5623 3.27312 11.9479 2.88562 8.46078C2.68566 6.66115 2.65326 5.03501 2.6698 3.8602C2.67809 3.27139 2.69858 2.79106 2.71765 2.45395C2.72719 2.28553 2.73607 2.15193 2.74304 2.05844C2.74651 2.01194 2.74964 1.9745 2.75183 1.94809C2.75289 1.93536 2.75407 1.92465 2.75476 1.91684C2.75507 1.91325 2.7555 1.90959 2.75574 1.90707V1.90219C2.75579 1.90163 2.75652 1.90084 4.74792 2.08188L2.75574 1.90121C2.84314 0.939851 3.60595 0.17728 4.56726 0.0896912L4.74792 2.08188C4.57736 0.205727 4.56826 0.0960934 4.56824 0.0896912H4.57312C4.5756 0.0894705 4.57925 0.0890391 4.58289 0.0887146C4.59067 0.0880379 4.60136 0.0868516 4.61414 0.0857849C4.6405 0.0835976 4.67793 0.0804727 4.72449 0.0769958C4.81793 0.0700226 4.9515 0.0611448 5.12 0.0516052C5.45705 0.0325267 5.93737 0.0120555 6.52625 0.00375366ZM45.33 12.0018C44.4755 12.0004 43.385 12.0347 42.205 12.1659C39.3907 12.4786 36.5366 13.2834 34.8885 14.9315C32.8145 17.006 32.8142 20.3696 34.8885 22.4442C36.9632 24.5184 40.3269 24.5181 42.4012 22.4442C44.0493 20.7962 44.8541 17.9419 45.1669 15.1278C45.298 13.9475 45.3314 12.8563 45.33 12.0018ZM6.66785 4.0018C6.65578 5.0499 6.68891 6.46872 6.86121 8.01938C7.22782 11.3182 8.17649 14.7467 10.1835 16.7538C12.7338 19.304 16.8694 19.3038 19.4198 16.7538C21.9702 14.2033 21.9702 10.0679 19.4198 7.51743C17.4127 5.51036 13.9843 4.56175 10.6854 4.19516C9.13469 4.02287 7.71591 3.98972 6.66785 4.0018Z"
+                                fill="#6C6B75"/>
+                    </svg>
+                </div>
+                <p slot="description" class="text-base leading-relaxed">
+                    Haz visible el impacto de tus decisiones. <strong>Mide tu Huella de Carbono y Agua</strong>. Celebra cada
+                    alimento que <strong>evitas desperdiciar.</strong>
+                </p>
+            </FeatureCard>
+            <FeatureCard title="Alimentación Sostenible">
+                <div slot="icon">
+                    <svg width="51" height="57" viewBox="0 0 51 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M9.375 28.0417C9.375 23.6857 11.5689 19.3296 14.7083 17.375M25.375 12.0417C25.375 8.48612 26.975 1.375 33.375 1.375M14.7083 9.375C7.34455 9.375 1.375 17.4121 1.375 25.4491C1.375 34.8257 2.70833 41.5233 8.04167 49.5603C12.0962 54.9915 17.509 56.3531 23.2787 52.5491C24.5102 51.7374 26.2398 51.7374 27.4713 52.5491C33.2409 56.3531 38.6539 54.9915 42.7083 49.5603C48.0417 41.5233 49.375 34.8257 49.375 25.4491C49.375 17.4121 43.4054 9.375 36.0417 9.375C32.2406 9.375 28.811 11.4681 26.3822 13.7284C25.8177 14.2536 24.9323 14.2536 24.3678 13.7284C21.939 11.4681 18.5095 9.375 14.7083 9.375Z"
+                                stroke="#6B6A74" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <p slot="description" class="text-base leading-relaxed">
+                    <strong>Lleva un registro</strong> actualizado de tus ingredientes. Aprovechar lo que tienes para alimentarte bien es ser
+                    sostenible y <strong>cuida el Planeta.</strong>
+                </p>
+            </FeatureCard>
+            <FeatureCard title="Inventario Inteligente">
+                <div slot="icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24.3581 6.66656C17.248 6.82856 13.0951 7.50539 10.2576 10.333C7.77422 12.8078 6.94406 16.2867 6.66656 21.8666M39.6418 6.66656C46.7519 6.82856 50.9047 7.50539 53.7423 10.333C56.2255 12.8078 57.0556 16.2867 57.3332 21.8666M39.6418 57.3332C46.7519 57.1711 50.9047 56.4943 53.7423 53.6668C56.2255 51.1919 57.0556 47.713 57.3332 42.1332M24.3581 57.3332C17.248 57.1711 13.0951 56.4943 10.2576 53.6668C7.77422 51.1919 6.94406 47.713 6.66656 42.1332" stroke="#6B6A74" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M42.9072 17.4196C41.4226 17.4196 40.2192 21.387 40.2192 26.2811H42.9072C44.2026 26.2811 44.8504 26.2811 45.2513 25.7857C45.6524 25.2902 45.5825 24.6378 45.4429 23.3329C45.0744 19.8881 44.0782 17.4196 42.9072 17.4196Z" stroke="#6B6A74" stroke-width="2.19178"/>
+                        <path d="M40.2191 26.3612V42.0041C40.2191 44.2368 40.2191 45.353 39.6031 45.7924L22.969 46.2379C21.719 46.2379 20.5082 46.5107 19.5017 45.7924C18.8857 45.353 18.8857 44.2368 18.8857 42.0041V26.3612C18.8857 22.1461 18.8857 20.0385 20.0573 18.729C21.2289 17.4196 23.1145 17.4196 26.8857 17.4196H42.8857" stroke="#6B6A74" stroke-width="2.19178" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M24.2192 23.3272H34.8858" stroke="#6B6A74" stroke-width="2.19178" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M26.8858 29.235H24.2192" stroke="#6B6A74" stroke-width="2.19178" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M32.8857 30.5273C31.7812 30.5273 30.8857 31.3951 30.8857 32.4658C30.8857 33.5364 31.7812 34.4042 32.8857 34.4042C33.9903 34.4042 34.8857 35.2721 34.8857 36.3427C34.8857 37.4133 33.9903 38.2811 32.8857 38.2811M32.8857 30.5273C33.7565 30.5273 34.4973 31.0667 34.7719 31.8196M32.8857 30.5273V29.235M32.8857 38.2811C32.0149 38.2811 31.2741 37.7418 30.9996 36.9888M32.8857 38.2811V39.5734" stroke="#6B6A74" stroke-width="2.19178" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <p slot="description" class="text-base leading-relaxed">
+                    <strong>Conoce la vida útil de tus ingredientes</strong>, ubicación y stock. Recibe alertas de caducidad y <strong>controla tus cantidades</strong> en tiempo real.
+                </p>
+            </FeatureCard>
+            <FeatureCard title="Plan Nutrix y Plan Express">
+                <div slot="icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M42.6666 5.33331V16M21.3333 5.33331V16" stroke="#6C6B75" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M34.6667 10.6667H29.3333C19.2767 10.6667 14.2484 10.6667 11.1242 13.7909C8 16.9151 8 21.9434 8 32V37.3334C8 47.3899 8 52.4184 11.1242 55.5424C14.2484 58.6667 19.2767 58.6667 29.3333 58.6667H34.6667C44.7232 58.6667 49.7517 58.6667 52.8757 55.5424C56 52.4184 56 47.3899 56 37.3334V32C56 21.9434 56 16.9151 52.8757 13.7909C49.7517 10.6667 44.7232 10.6667 34.6667 10.6667Z" stroke="#6C6B75" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 26.6667H56" stroke="#6C6B75" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M29.3333 37.3333H42.6666M21.3333 37.3333H21.3572M34.6666 48H21.3333M42.6666 48H42.6426" stroke="#6C6B75" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <p slot="description" class="text-base leading-relaxed">
+                    <strong>Planifica tus comidas, ahorra dinero</strong> y tiempo en tu día a día. Conoce recetas que reutilizan ingredientes, se adaptan a tu <strong>nutrición y tu bolsillo.</strong>
+                </p>
+            </FeatureCard>
+            <FeatureCard title="IA Nutricional Predictiva">
+                <div slot="icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.6666 32C10.6666 21.9434 10.6666 16.9151 13.7908 13.7909C16.915 10.6667 21.9433 10.6667 32 10.6667C42.0565 10.6667 47.085 10.6667 50.209 13.7909C53.3333 16.9151 53.3333 21.9434 53.3333 32C53.3333 42.0566 53.3333 47.0851 50.209 50.2091C47.085 53.3334 42.0565 53.3334 32 53.3334C21.9433 53.3334 16.915 53.3334 13.7908 50.2091C10.6666 47.0851 10.6666 42.0566 10.6666 32Z" stroke="#6B6A74" stroke-width="4" stroke-linejoin="round"/>
+                        <path d="M20 40L24.9117 25.2649C25.1635 24.5095 25.8704 24 26.6667 24C27.4629 24 28.1699 24.5095 28.4216 25.2649L33.3333 40M22.6667 34.6667H30.6667" stroke="#6B6A74" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M41.3334 24V40" stroke="#6B6A74" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21.3334 5.33331V10.6666M42.6667 5.33331V10.6666M32 5.33331V10.6666M21.3334 53.3333V58.6666M32 53.3333V58.6666M42.6667 53.3333V58.6666M58.6667 42.6666H53.3334M10.6667 21.3333H5.33337M10.6667 42.6666H5.33337M10.6667 32H5.33337M58.6667 21.3333H53.3334M58.6667 32H53.3334" stroke="#6B6A74" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <p slot="description" class="text-base leading-relaxed">
+                    <strong>Recibe recomendaciones</strong> de menús hiperpersonalizados basados en tus ingredientes de despensa física, tu localidad, clima y estado anímico.
+                </p>
+            </FeatureCard>
+        </div>
+        <h2 class="mx-auto max-w-350 mt-12 text-2xl md:text-3xl lg:text-4xl font-bold text-center leading-snug px-4 text-[#332890] whitespace-normal md:whitespace-nowrap" style="font-family: Manrope, sans-serif;">
+            <span class="font-bold">Transforma tus buenos hábitos</span> <span class="font-normal">en logros y beneficios reales.</span>
+        </h2>
+    </div>
+</section>

@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import logo from "../../assets/logo.webp"
+---
+
+<footer id="contact" class="bg-[#1f1c5c] text-white">
+    <div class="container mx-auto px-4 py-10">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+
+            <div class="space-y-2">
+                <div class="flex items-center gap-3">
+                    <Image src={logo} alt="EcoNutrix icono" class="h-12 w-auto" />
+                </div>
+                <p class="font-semibold text-lg">econutrix@contacto.com</p>
+                <p class="text-gray-300">LATAM - Chile</p>
+            </div>
+
+            <div class="flex gap-4">
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-gray-300 hover:text-white transition-transform duration-200 hover:-translate-y-1 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-8 w-8">
+                        <path
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.988H8.078V12h2.36V9.797c0-2.332 1.392-3.62 3.522-3.62 1.02 0 2.086.182 2.086.182v2.29h-1.175c-1.159 0-1.52.719-1.52 1.453V12h2.587l-.413 2.89h-2.174v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-gray-300 hover:text-white transition-transform duration-200 hover:-translate-y-1 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7">
+                        <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <hr class="my-8 border-white/20" />
+
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+            <p class="text-gray-400">
+                &copy; {new Date().getFullYear()} EcoNutrix. Todos los derechos reservados.
+            </p>
+            <nav class="flex gap-4 md:gap-6">
+                <a href="/declaracion-sostenibilidad" class="text-gray-300 hover:text-white hover:underline">
+                    Declaración de Sostenibilidad
+                </a>
+                <a href="/terminos-condiciones" class="text-gray-300 hover:text-white hover:underline">
+                    Términos y condiciones
+                </a>
+                <a href="/politica-cookies" class="text-gray-300 hover:text-white hover:underline">
+                    Política de cookies
+                </a>
+            </nav>
+        </div>
+    </div>
+</footer>
