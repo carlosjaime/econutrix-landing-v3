@@ -1,0 +1,415 @@
+---
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+---
+
+<!doctype html>
+<html lang="es" data-theme="light" class="light" style="color-scheme: light only !important;">
+<head>
+    <script>
+        document.documentElement.style.colorScheme = 'light only';
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light only" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- SEO Meta Tags -->
+    <title>Política de Cookies | EcoNutrix - Uso de Cookies y Privacidad</title>
+    <meta name="description" content="Política de Cookies de EcoNutrix. Información transparente sobre el uso de cookies, tecnologías de seguimiento y cómo gestionarlas. Tu privacidad es nuestra prioridad." />
+    <meta name="keywords" content="política cookies, privacidad EcoNutrix, cookies sitio web, gestión cookies, GDPR, protección datos" />
+    <meta name="author" content="EcoNutrix" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://econutrix.com/politica-cookies" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://econutrix.com/politica-cookies" />
+    <meta property="og:title" content="Política de Cookies | EcoNutrix" />
+    <meta property="og:description" content="Información sobre el uso de cookies en nuestra plataforma." />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="EcoNutrix" />
+
+    <!-- Favicon para navegadores modernos -->
+    <link rel="icon" type="image/x-icon" href="/favicon_io/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+
+    <!-- Apple Touch Icon para iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon_io/android-chrome-512x512.png" />
+
+    <!-- Web App Manifest para PWA -->
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-white">
+<Header />
+
+<main class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="relative py-16 md:py-20 px-4 md:px-8 bg-gradient-to-br from-indigo-700 to-purple-800 text-white">
+        <div class="max-w-5xl mx-auto">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style="font-family: 'Manrope', sans-serif;">
+                Política de Cookies
+            </h1>
+            <p class="text-base md:text-lg leading-relaxed opacity-95">
+                <strong>Fecha de actualización: Octubre 2025</strong>
+            </p>
+            <p class="text-base md:text-lg leading-relaxed opacity-95 mt-4">
+                En EcoNutrix utilizamos Cookies y tecnologías similares para mejorar tu experiencia, optimizar el rendimiento de la plataforma y ofrecer contenido personalizado. Esta política explica qué son las cookies, qué tipos utilizamos, con qué fines y cómo puedes gestionarlas.
+            </p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-12 md:py-20 px-4 md:px-8 bg-white">
+        <div class="max-w-5xl mx-auto space-y-12">
+
+            <!-- Section 1 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    1. ¿Qué son las Cookies?
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        Las cookies son pequeños archivos de texto que se guardan en tu dispositivo (ordenador, tablet o smartphone) cuando visitas informes, cuando visitas un sitio web o utilizas una aplicación. Contienen información que permite:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>Recordar tus preferencias e idioma</li>
+                        <li>Mejorar la navegación y el rendimiento del sitio</li>
+                        <li>Personalizar el contenido que ves</li>
+                        <li>Analizar cómo interactúas con nuestra plataforma</li>
+                    </ul>
+                    <p class="mt-4">
+                        Las cookies pueden ser almacenadas información personal sensible como nombres, contraseña o datos bancarios. En EcoNutrix, solo recopilamos información necesaria para mejorar tu experiencia.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 2 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    2. Tipos de cookies que utiliza EcoNutrix
+                </h2>
+                <div class="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                        EcoNutrix en su plataforma digital usa varias categorías de cookies e implementa tecnologías recibidas para mejorar la experiencia en el sitio, como:
+                    </p>
+
+                    <!-- Cookies Table -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse border border-gray-300 mt-4">
+                            <thead class="bg-purple-100">
+                            <tr>
+                                <th class="border border-gray-300 px-4 py-3 text-left font-semibold">Tipo de cookie</th>
+                                <th class="border border-gray-300 px-4 py-3 text-left font-semibold">Finalidad</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="border border-gray-300 px-4 py-3 font-medium">Estrictamente necesarias</td>
+                                <td class="border border-gray-300 px-4 py-3">
+                                    Esenciales para el funcionamiento básico del sitio, como dar login, seguridad de sesión, autenticación y seguridad
+                                </td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="border border-gray-300 px-4 py-3 font-medium">De preferencias o personalización</td>
+                                <td class="border border-gray-300 px-4 py-3">
+                                    Recuerdan tus configuraciones (idioma, tamaño de letra, estructura, etc.) y tus preferencias personales, etc.)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="border border-gray-300 px-4 py-3 font-medium">De análisis o rendimiento</td>
+                                <td class="border border-gray-300 px-4 py-3">
+                                    Recopilan información anónima sobre cómo usan la plataforma para mejorar su diseño y usabilidad
+                                </td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="border border-gray-300 px-4 py-3 font-medium">De publicidad (test de terceros)</td>
+                                <td class="border border-gray-300 px-4 py-3">
+                                    Sirven para mostrarte contenido publicitario relevante y test orientado a tus intereses explícitos
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="mt-6">
+                        <strong>Exclusivos no utilizamos cookies de seguimiento masivo ni navegamos tu privacidad profundamente.</strong> Como empresa, adoptamos principios ecológicos y respetuosos con los datos del usuario. Nuestro objetivo es utilizar solo la información que nos permita brindarte un mejor servicio.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 3 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    3. Base legal y consentimiento
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        El uso de cookies se realiza de acuerdo al consentimiento previo e informado, excepto en el caso de las cookies estrictamente necesarias, que son indispensables para el funcionamiento de EcoNutrix.
+                    </p>
+                    <p>
+                        Las cookies de preferencias se instalan automáticamente y no pasan información personal y no son necesarias para el funcionamiento básico del sitio web.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 4 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    4. Gestión de Cookies
+                </h2>
+                <div class="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                        Puedes gestionar o eliminar las cookies en cualquier momento desde la configuración de tu navegador. A continuación, te indicamos cómo hacerlo en los navegadores más utilizados:
+                    </p>
+
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li><strong>Google Chrome:</strong> Configuración → Privacidad y seguridad → Cookies y otros datos de sitios</li>
+                        <li><strong>Mozilla Firefox:</strong> Opciones → Privacidad y seguridad → Cookies y datos del sitio</li>
+                        <li><strong>Safari:</strong> Preferencias → Privacidad → Gestionar datos de sitios web</li>
+                        <li><strong>Microsoft Edge:</strong> Configuración → Cookies y permisos del sitio</li>
+                    </ul>
+
+                    <p class="mt-6">
+                        También puedes ajustar tus preferencias directamente desde nuestro <strong>Centro de Preferencias de Cookies</strong>, disponible al aceptar o rechazar las cookies desde el banner. Este centro te permite activar o desactivar cada categoría según tus necesidades.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 5 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    5. Servicios de terceros
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        EcoNutrix puede utilizar servicios de terceros, como Google Analytics o Meta Pixel, que utilizan cookies propias para analizar la publicidad.
+                    </p>
+                    <p>
+                        Estos servicios y contenidos, normalmente proporcionados por empresas que operan fuera del ámbito de las normas de protección de datos y privacidad de Europa o la IP (dirección) de Internet. Puedes consultar sus políticas de privacidad en sus respectivos sitios web.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 6 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    6. Actualizaciones de la Política de Cookies
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        Podemos actualizar esta Política de Cookies para reflejar cambios en las normativas o en las tecnologías que utilizamos.
+                    </p>
+                    <p>
+                        <strong>Te recomendamos revisarla periódicamente.</strong> La fecha de la última actualización aparecerá en la parte superior de este documento.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 7 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    7. Contacto
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        Si tienes cualquier duda sobre el uso de cookies o las opciones personalizadas, escríbenos a:
+                    </p>
+                    <div class="bg-purple-50 border-l-4 border-purple-600 p-4 rounded">
+                        <p class="font-semibold text-lg">📧 <a href="mailto:privacidad@econutrix.com" class="text-purple-600 hover:text-purple-800">privacidad@econutrix.com</a></p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Final Note -->
+            <div class="bg-gradient-to-r from-green-50 to-blue-50 border-l-4 border-green-600 p-6 rounded-lg mt-12">
+                <div class="flex items-start gap-4">
+                    <div class="text-4xl">🍪</div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-3 text-gray-800">Tecnología consciente, transparente y respetuosa con tus decisiones digitales</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            En EcoNutrix creemos que el cuidado del planeta también incluye un uso responsable de la tecnología. Por eso, buscamos un equilibrio entre funcionalidad, personalización y respeto por tu privacidad.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="py-16 md:py-20 px-4 md:px-8 bg-gradient-to-br from-purple-100 to-indigo-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                Sé parte del 1º Lanzamiento de EcoNutrix
+            </h2>
+            <p class="text-lg md:text-xl text-gray-700 mb-8">
+                Descubre una nueva forma de comer, vivir y sentir. Cuida el planeta
+            </p>
+            <a href="https://play.google.com/store/games?pli=1" target="_blank" rel="noopener noreferrer" class="inline-block">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                     alt="Google Play"
+                     class="h-14 md:h-16 w-auto" />
+            </a>
+        </div>
+    </section>
+</main>
+
+<Footer />
+</body>
+</html>
+
+<style>
+    .bg-gradient-to-br {
+        background: -webkit-linear-gradient(top left, var(--tw-gradient-stops));
+        background: linear-gradient(to bottom right, var(--tw-gradient-stops));
+    }
+
+    h1, h2, h3, p {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+    }
+
+    .overflow-x-auto {
+        -webkit-overflow-scrolling: touch;
+        overflow-x: auto;
+    }
+
+    .flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    .inline-block {
+        display: -moz-inline-box;
+        display: inline-block;
+    }
+
+    img {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .rounded {
+        -webkit-border-radius: 0.25rem;
+        border-radius: 0.25rem;
+    }
+
+    .rounded-lg {
+        -webkit-border-radius: 0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    @supports (-webkit-touch-callout: none) {
+        .min-h-screen {
+            min-height: -webkit-fill-available;
+        }
+    }
+
+    @media (max-width: 640px) {
+        p, td {
+            -webkit-hyphens: auto;
+            hyphens: auto;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    }
+
+    body {
+        opacity: 0;
+        animation: fadeInBody 0.4s ease-out forwards;
+    }
+
+    @keyframes fadeInBody {
+        to { opacity: 1; }
+    }
+
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .animate-on-scroll.is-hidden {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+</style>
+
+<script>
+    const initScrollAnimations = () => {
+        const sections = document.querySelectorAll('main section');
+        if (!sections.length) return;
+
+        sections.forEach((section) => {
+            section.classList.add('animate-on-scroll');
+
+            const animatableElements = section.querySelectorAll('h1, h2, h3, h4, p, img, article, [class*="card"], [class*="grid"] > *, button, a[href], ul, ol, figure, video, table, .flex');
+
+            animatableElements.forEach((el, index) => {
+                el.classList.add('animate-on-scroll');
+                if (el instanceof HTMLElement) {
+                    el.style.transitionDelay = `${Math.min(index * 0.08, 0.5)}s`;
+                }
+            });
+        });
+
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    entry.target.classList.remove('is-hidden');
+                } else {
+                    entry.target.classList.remove('is-visible');
+                    entry.target.classList.add('is-hidden');
+                }
+            });
+        }, {
+            rootMargin: '-50px 0px -50px 0px',
+            threshold: [0, 0.1, 0.2]
+        });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            scrollObserver.observe(el);
+        });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollAnimations, { once: true });
+    } else {
+        requestAnimationFrame(initScrollAnimations);
+    }
+</script>

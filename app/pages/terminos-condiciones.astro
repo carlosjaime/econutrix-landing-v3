@@ -1,0 +1,495 @@
+---
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import "../styles/globals.css"
+---
+
+<!doctype html>
+<html lang="es" data-theme="light" class="light" style="color-scheme: light only !important;">
+<head>
+    <script>
+        document.documentElement.style.colorScheme = 'light only';
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light only" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- SEO Meta Tags -->
+    <title>Términos y Condiciones | EcoNutrix - Condiciones de Uso</title>
+    <meta name="description" content="Términos y Condiciones de uso de la plataforma EcoNutrix. Información legal sobre el servicio, privacidad, propiedad intelectual y responsabilidades del usuario." />
+    <meta name="keywords" content="términos condiciones EcoNutrix, condiciones uso, política privacidad, protección datos, GDPR Chile, derechos usuario" />
+    <meta name="author" content="EcoNutrix" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://econutrix.com/terminos-condiciones" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://econutrix.com/terminos-condiciones" />
+    <meta property="og:title" content="Términos y Condiciones | EcoNutrix" />
+    <meta property="og:description" content="Términos y Condiciones de uso de la plataforma EcoNutrix." />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="EcoNutrix" />
+
+    <!-- Favicon para navegadores modernos -->
+    <link rel="icon" type="image/x-icon" href="/favicon_io/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
+
+    <!-- Apple Touch Icon para iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon_io/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon_io/android-chrome-512x512.png" />
+
+    <!-- Web App Manifest para PWA -->
+    <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-white">
+<Header />
+
+<main class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="relative py-16 md:py-20 px-4 md:px-8 bg-gradient-to-br from-purple-700 to-indigo-800 text-white">
+        <div class="max-w-5xl mx-auto">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style="font-family: 'Manrope', sans-serif;">
+                Términos y Condiciones
+            </h1>
+            <p class="text-base md:text-lg leading-relaxed opacity-95">
+                Este documento describe los derechos y las nuestras normas legales (usuarios) sobre el servicio EcoNutrix.
+            </p>
+            <p class="text-sm md:text-base mt-4 opacity-90">
+                <strong>Última actualización:</strong> Octubre 2025<br />
+                <strong>Fecha de vigencia desde:</strong> Santiago, Chile
+            </p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-12 md:py-20 px-4 md:px-8 bg-white">
+        <div class="max-w-5xl mx-auto space-y-12">
+
+            <!-- Section 1 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    1. Aceptación de los términos
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        Al acceder o utilizar la aplicación móvil EcoNutrix (en adelante, "la App"), ya sea a través de dispositivos móviles, aplicaciones móviles o cualquier otra plataforma, usted acepta estar legalmente vinculado por estos Términos y Condiciones. Si no está de acuerdo con alguno de estos términos, le solicitamos que no use nuestra aplicación.
+                    </p>
+                    <p>
+                        Tenemos el derecho de modificar estos términos en cualquier momento. Cualquier cambio entrará en vigencia inmediatamente después de su publicación en la aplicación o en nuestro sitio web. Su uso continuo de la aplicación constituye su aceptación de cualquier cambio realizado.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 2 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    2. Descripción del servicio
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        EcoNutrix es una plataforma digital que utiliza inteligencia artificial y aprendizaje automático para:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>Sugerir recetas y planes nutricionales personalizados</li>
+                        <li>Rastrear el uso de ingredientes y preferencias</li>
+                        <li>Ayudar a reducir el desperdicio de alimentos</li>
+                        <li>Proporcionar información sobre sostenibilidad alimentaria</li>
+                    </ul>
+                    <p class="mt-4">
+                        EcoNutrix no ofrece asesoramiento médico o nutricional profesional. Los consejos proporcionados en esta aplicación son de carácter general. Siempre debe consultar a un profesional de la salud antes de tomar decisiones sobre su dieta, especialmente si tiene condiciones médicas existentes.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 3 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    3. Uso del servicio
+                </h2>
+                <div class="space-y-4 text-gray-700 leading-relaxed">
+                    <h3 class="text-xl font-semibold text-purple-700">3.1 Condiciones de uso</h3>
+                    <p>Al usar la aplicación, usted se compromete a cumplir con los términos fundamentales. legal e todo momento:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>Utilizar la app solo para fines lícitos y de acuerdo con estos términos</li>
+                        <li>Proporcionar información precisa, actualizada y completa</li>
+                        <li>Mantener la confidencialidad de su cuenta y contraseña</li>
+                        <li>No compartir su cuenta con terceros</li>
+                        <li>No utilizar la app para fines comerciales sin autorización previa</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-purple-700 mt-6">3.2 Edad mínima</h3>
+                    <p>Debe tener al menos 18 años para usar la aplicación. Si es menor de edad, necesita la supervisión de un adulto. En ciertos casos, los usuarios de 18 años en adelante con consentimiento expreso parental pueden utilizar nuestro servicio.</p>
+                </div>
+            </article>
+
+            <!-- Section 4 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    4. Registro y cuenta de usuario
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        Para acceder a ciertas funciones de la App, es posible que deba crear una cuenta. Usted es el único responsable de mantener la confidencialidad de su cuenta y contraseña, así como de todas las actividades que ocurran bajo su cuenta.
+                    </p>
+                    <p>
+                        Usted acepta notificarnos inmediatamente sobre cualquier uso no autorizado de su cuenta o cualquier otra violación de la seguridad. EcoNutrix no se hará responsable de ninguna pérdida o daño derivado de su incumplimiento de esta obligación de seguridad.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 5 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    5. Protección de datos y privacidad
+                </h2>
+                <div class="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                        EcoNutrix cumple estrictamente la Ley N° 19.628 sobre Protección de la Vida Privada y el Reglamento General de Protección de Datos (RGPD - GDPR). Puede encontrar más información en nuestra Política de Privacidad disponible en la aplicación y en nuestro sitio web.
+                    </p>
+
+                    <h3 class="text-xl font-semibold text-purple-700">5.1 Datos recopilados</h3>
+                    <p>Recopilamos los siguientes datos:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>Información personal básica (nombre, correo electrónico, edad)</li>
+                        <li>Preferencias alimentarias y restricciones dietéticas</li>
+                        <li>Historial de uso de ingredientes</li>
+                        <li>Datos de interacción con la aplicación</li>
+                        <li>Información de ubicación (opcional, para recomendaciones locales)</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-purple-700 mt-6">5.2 Finalidad del tratamiento</h3>
+                    <p>Sus datos son utilizados exclusivamente para:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>Personalizar su experiencia dentro de la app</li>
+                        <li>Mejorar nuestros algoritmos y recomendaciones</li>
+                        <li>Proporcionar soporte técnico y atención al cliente</li>
+                        <li>Enviar comunicaciones relacionadas con el servicio (con su consentimiento)</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-purple-700 mt-6">5.3 Derechos del usuario</h3>
+                    <p>Usted tiene derecho a:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>Acceder a sus datos personales</li>
+                        <li>Rectificar información inexacta</li>
+                        <li>Solicitar la eliminación de sus datos</li>
+                        <li>Oponerse al tratamiento de ciertos datos</li>
+                        <li>Revocar su consentimiento en cualquier momento</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Section 6 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    6. Cookies y tecnologías de seguimiento
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        Utilizamos cookies y tecnologías similares para mejorar su experiencia. Consulte nuestra Política de Cookies para más información sobre cómo utilizamos estas tecnologías y cómo puede controlarlas.
+                    </p>
+                    <p>
+                        Puede gestionar las preferencias de cookies en cualquier momento desde la configuración de la aplicación o a través del Centro de Preferencias de Cookies.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 7 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    7. Propiedad intelectual
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        Todo el contenido de la aplicación, incluyendo pero no limitado a textos, gráficos, logotipos, iconos, imágenes, clips de audio, descargas digitales y compilaciones de datos, es propiedad de <strong>EcoNutrix Spa</strong> o de sus proveedores de contenido y está protegido por las leyes de propiedad intelectual de Chile e internacionales.
+                    </p>
+                    <p>
+                        Usted no puede reproducir, distribuir, modificar, crear trabajos derivados, mostrar públicamente, publicar, licenciar, vender o utilizar de cualquier otra forma el contenido sin nuestro consentimiento previo por escrito.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 8 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    8. Limitación de responsabilidad
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        EcoNutrix no garantiza la exactitud completa o apropiación de ningún consejo, resultado, información o contenido proporcionado por nuestra aplicación. La información proporcionada es solo para fines informativos y educativos.
+                    </p>
+                    <p>
+                        En ningún caso EcoNutrix será responsable de daños directos, indirectos, incidentales, especiales, consecuentes o ejemplares, incluyendo pero no limitado a, pérdida de beneficios, datos, o uso, que resulten del uso de la aplicación.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 9 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    9. Actualizaciones y mantenimiento
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        EcoNutrix se reserva el derecho a actualizar, modificar, mejorar o descontinuar cualquier aspecto de la aplicación en cualquier momento, con o sin previo aviso.
+                    </p>
+                    <p>
+                        Nos esforzamos por mantener la aplicación disponible en todo momento, pero no garantizamos que el servicio estará libre de interrupciones, errores o será completamente seguro.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 10 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    10. Uso de inteligencia artificial responsable
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        Nuestra aplicación utiliza tecnología de inteligencia artificial para proporcionar recomendaciones personalizadas. Nos comprometemos a:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 ml-4">
+                        <li>Usar IA de manera ética y transparente</li>
+                        <li>No discriminar basándose en características protegidas por la ley</li>
+                        <li>Proporcionar explicaciones sobre cómo funciona nuestro sistema de IA cuando sea posible</li>
+                        <li>Mejorar continuamente nuestros algoritmos para mayor precisión y equidad</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Section 11 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    11. Resolución de conflictos
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        Cualquier disputa que surja en relación con estos Términos y Condiciones se rige por las leyes de la <strong>República de Chile</strong>.
+                    </p>
+                    <p>
+                        Cualquier controversia, diferencia, cuestión o reclamo surgido de o relacionado con estos términos será sometido a los tribunales ordinarios de justicia de Santiago, Chile.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Section 12 -->
+            <article>
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                    12. Contacto
+                </h2>
+                <div class="space-y-3 text-gray-700 leading-relaxed">
+                    <p>
+                        Si tiene alguna pregunta sobre estos Términos y Condiciones, puede contactarnos en:
+                    </p>
+                    <div class="bg-purple-50 border-l-4 border-purple-600 p-4 rounded">
+                        <p class="font-semibold">Email: <a href="mailto:contacto@econutrix.com" class="text-purple-600 hover:text-purple-800">contacto@econutrix.com</a></p>
+                        <p class="font-semibold">Ubicación: LATAM - Chile</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Final Note -->
+            <div class="bg-gray-100 border-l-4 border-gray-600 p-6 rounded-lg mt-12">
+                <h3 class="text-xl font-bold mb-3 text-gray-800">Compromiso EcoNutrix</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    En EcoNutrix nos comprometemos a proporcionar un servicio de calidad, ético, sostenible y centrado en las necesidades del usuario. Trabajamos constantemente para mejorar nuestra tecnología, proteger su privacidad y contribuir a un futuro más sostenible.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-20 px-4 md:px-8 bg-gradient-to-br from-purple-100 to-blue-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800" style="font-family: 'Manrope', sans-serif;">
+                Sé parte del 1º Lanzamiento de EcoNutrix
+            </h2>
+            <p class="text-lg md:text-xl text-gray-700 mb-8">
+                Descubre una nueva forma de comer, vivir y sentir. Cuida el planeta
+            </p>
+            <a href="https://play.google.com/store/games?pli=1" target="_blank" rel="noopener noreferrer" class="inline-block">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                     alt="Google Play"
+                     class="h-14 md:h-16 w-auto" />
+            </a>
+        </div>
+    </section>
+</main>
+
+<Footer />
+</body>
+</html>
+
+<style>
+
+    /* Gradient backgrounds cross-browser */
+    .bg-gradient-to-br {
+        background: -webkit-linear-gradient(top left, var(--tw-gradient-stops));
+        background: linear-gradient(to bottom right, var(--tw-gradient-stops));
+    }
+
+    /* Font smoothing */
+    h1, h2, h3, p, li {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Flexbox compatibility */
+    .flex {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    .inline-block {
+        display: -moz-inline-box;
+        display: inline-block;
+    }
+
+    /* Image optimization */
+    img {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    /* Border-radius cross-browser */
+    .rounded {
+        -webkit-border-radius: 0.25rem;
+        border-radius: 0.25rem;
+    }
+
+    .rounded-lg {
+        -webkit-border-radius: 0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    /* Box-shadow cross-browser */
+    .border-l-4 {
+        border-left-width: 4px;
+        border-left-style: solid;
+    }
+
+    /* List styling */
+    ul {
+        list-style-position: inside;
+    }
+
+    /* iOS Safari min-height fix */
+    @supports (-webkit-touch-callout: none) {
+        .min-h-screen {
+            min-height: -webkit-fill-available;
+        }
+    }
+
+    /* Text wrap for mobile */
+    @media (max-width: 640px) {
+        p, li {
+            -webkit-hyphens: auto;
+            hyphens: auto;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    }
+
+    body {
+        opacity: 0;
+        animation: fadeInBody 0.4s ease-out forwards;
+    }
+
+    @keyframes fadeInBody {
+        to { opacity: 1; }
+    }
+
+    /* Animaciones de scroll reveal */
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-on-scroll.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .animate-on-scroll.is-hidden {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+</style>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FADE IN ANIMATION - Vanilla JS con IntersectionObserver
+═══════════════════════════════════════════════════════════════ -->
+<script>
+    // Sistema de animaciones scroll reveal bidireccional
+    const initScrollAnimations = () => {
+        const sections = document.querySelectorAll('main section');
+        if (!sections.length) return;
+
+        // Agregar clase animatable a todas las secciones y sus hijos
+        sections.forEach((section) => {
+            section.classList.add('animate-on-scroll');
+
+            // Elementos animables dentro de cada sección
+            const animatableElements = section.querySelectorAll('h1, h2, h3, h4, p, img, article, [class*="card"], [class*="grid"] > *, button, a[href], ul, ol, figure, video, table, .flex');
+
+            animatableElements.forEach((el, index) => {
+                el.classList.add('animate-on-scroll');
+                if (el instanceof HTMLElement) {
+                    el.style.transitionDelay = `${Math.min(index * 0.08, 0.5)}s`;
+                }
+            });
+        });
+
+        // Observer bidireccional - show/hide según scroll
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Entrando en viewport - SHOW con fadeIn
+                    entry.target.classList.add('is-visible');
+                    entry.target.classList.remove('is-hidden');
+                } else {
+                    // Saliendo del viewport - HIDE con fadeOut
+                    entry.target.classList.remove('is-visible');
+                    entry.target.classList.add('is-hidden');
+                }
+            });
+        }, {
+            rootMargin: '-50px 0px -50px 0px',
+            threshold: [0, 0.1, 0.2]
+        });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            scrollObserver.observe(el);
+        });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollAnimations, { once: true });
+    } else {
+        requestAnimationFrame(initScrollAnimations);
+    }
+</script>
