@@ -1,7 +1,7 @@
 <section id="contact" class="relative py-20 bg-linear-to-b from-[#F4F3FC] to-white overflow-hidden">
     <div class="relative z-10 mx-auto px-4 text-center">
 
-        <div class="absolute left-0">
+        <div class="absolute left-0 hidden lg:block">
             <svg xmlns="http://www.w3.org/2000/svg" width="538" height="290" fill="none">
                 <g fill="#606060" opacity=".3">
                     <path
@@ -39,7 +39,7 @@
             </svg>
         </div>
 
-        <div class="absolute right-0">
+        <div class="absolute right-0 hidden lg:block">
             <svg xmlns="http://www.w3.org/2000/svg" width="314" height="281" fill="none">
                 <g fill="#606060" opacity=".3">
                     <path
@@ -85,7 +85,7 @@
             <p class="mt-4 text-xl text-gray-600">Suscríbete y entérate antes que nadie.</p>
 
             <form class="mt-8 max-w-lg mx-auto" data-newsletter-form>
-                <div class="flex items-end">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-end gap-0 sm:gap-0">
                     <div class="grow text-left">
                         <label for="email" class="text-sm font-medium text-gray-700">Email</label>
                         <input
@@ -93,12 +93,12 @@
                                 id="email"
                                 name="email"
                                 required
-                                class="mt-1 w-full h-12 px-4 outline-none bg-white border-2 border-gray-300 border-r-0 rounded-l-lg transition focus:border-primary"
+                                class="mt-1 w-full h-12 px-4 outline-none bg-white border-2 border-gray-300 rounded-t-lg sm:rounded-t-none sm:border-r-0 sm:rounded-l-lg transition focus:border-primary"
                                 aria-describedby="email-error"
                         />
                     </div>
                     <button type="submit"
-                            class="h-12 px-6 bg-linear-to-b from-[#332890] to-[#A34DA3] text-white font-semibold rounded-r-lg shadow-md transition transform disabled:opacity-50 disabled:cursor-not-allowed flex items-center cursor-pointer">
+                            class="h-12 px-6 bg-linear-to-b from-[#332890] to-[#A34DA3] text-white font-semibold rounded-b-lg sm:rounded-b-none sm:rounded-r-lg shadow-md transition transform disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center cursor-pointer">
                         <span data-button-text>Suscribirme</span>
                         <span data-loader class="ml-2 size-4 border-2 rounded-full border-t-transparent animate-spin hidden" />
                     </button>

@@ -9,9 +9,9 @@ const { title } = Astro.props
 <div
         class="rounded-xl bg-linear-to-b from-[#C0E67A] to-[#30D7CF] p-1"
 >
-    <div class="flex flex-col items-center h-full rounded-xl bg-white p-8">
+    <div class="flex flex-col items-center h-full rounded-xl bg-white p-6 md:p-8">
         <slot name="icon" />
-        <span class="text-2xl w-2/3 mt-4 mb-2 text-center font-extrabold text-[#A34DA3]">{title}</span>
+        <span class="text-xl md:text-2xl mt-4 mb-2 text-center font-extrabold text-[#A34DA3]">{title}</span>
         <slot name="description" />
     </div>
 </div>
