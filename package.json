@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "astro dev --host",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "astro preview --host",
     "check": "astro check"
   },
   "packageManager": "pnpm@10.28.2",
