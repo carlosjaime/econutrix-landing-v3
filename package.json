@@ -1,24 +1,25 @@
 {
-  "name": "landing-page",
+  "name": "econutrix",
   "type": "module",
-  "scripts": {
-    "dev": "astro dev --host",
-    "build": "astro build",
-    "preview": "astro preview --host",
-    "check": "astro check"
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=22.12.0"
   },
-  "packageManager": "pnpm@10.28.2",
-  "devDependencies": {
-    "@tailwindcss/vite": "4.1.18",
-    "astro": "5.17.1",
-    "clsx": "2.1.1",
-    "gsap": "3.14.2",
-    "sharp": "0.34.5",
-    "tailwind-merge": "3.4.0",
-    "tailwindcss": "4.1.18",
-    "typescript": "5.9.3"
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/node": "^9.5.4"
-  }
+    "@astrojs/node": "^10.0.5",
+    "@fontsource/manrope": "^5.2.8",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.1.5",
+    "tailwindcss": "^4.2.2"
+  },
+  "overrides": {
+    "vite": "^7"
+  },
+  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
 }

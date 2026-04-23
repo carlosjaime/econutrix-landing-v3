@@ -1,0 +1,28 @@
+@import "@fontsource/manrope/400.css";
+@import "@fontsource/manrope/500.css";
+@import "@fontsource/manrope/600.css";
+@import "@fontsource/manrope/700.css";
+@import "@fontsource/manrope/800.css";
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px; /* altura del header fijo */
+}
+
+html,
+body {
+  font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Los estados iniciales de [data-motion] los maneja
+   ScrollMotion.astro vía CSS animation-fill-mode: both.
+   No se necesita CSS adicional aquí. */
+
+button,
+input,
+select,
+textarea,
+a {
+  font-family: inherit;
+}

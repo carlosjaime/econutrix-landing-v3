@@ -1,0 +1,49 @@
+---
+// LandingPage EcoNutrix
+// Author: Carlos Jaime Lopez Martinez
+// Fecha: 20-Abril-2026
+
+import { Image } from 'astro:assets';
+import featureAutoIcon from '../../assets/images/Group.svg';
+import featureTimeIcon from '../../assets/images/Iconify-icon (4).svg';
+import featureUseIcon from '../../assets/images/Iconify-icon (6).svg';
+import featureWasteIcon from '../../assets/images/Iconify-icon (8).svg';
+import featurePersonalIcon from '../../assets/images/Icon (1).svg';
+import featureStartIcon from '../../assets/images/Iconify-icon (3).svg';
+
+const featureCards = [
+  ['Decisiones automáticas', 'Deja de pensar cada día qué cocinar', featureAutoIcon],
+  ['Ahorra tiempo real', 'Menos dudas, más acción', featureTimeIcon],
+  ['Usa lo que ya tienes', 'Aprovecha ingredientes antes de comprar', featureUseIcon],
+  ['Menos desperdicio', 'Evitas que la comida se pierda', featureWasteIcon],
+  ['Comidas para ti', 'Adaptadas a tu contexto real', featurePersonalIcon],
+  ['Empiezas al instante', 'Mejores decisiones, adaptadas a tu tiempo.', featureStartIcon],
+] as const;
+---
+
+<!-- LandingPage EcoNutrix | Author: Carlos Jaime Lopez Martinez | Fecha: 20-Abril-2026 -->
+<section data-motion-section class="relative overflow-hidden bg-white py-20 lg:py-28">
+  <div data-parallax data-parallax-speed="0.08" class="pointer-events-none absolute left-[-140px] top-[14%] h-[300px] w-[300px] rounded-full opacity-[0.08] blur-3xl" style="background: radial-gradient(circle, rgba(51, 40, 144, 0.24) 0%, rgba(163, 77, 163, 0.14) 34%, rgba(255, 255, 255, 0) 74%);"></div>
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="mb-12 max-w-xl">
+      <h2 data-motion="heading" class="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl lg:text-5xl">
+        Todo lo que necesitas.<br />Nada que no necesites.
+      </h2>
+    </div>
+    <div data-motion-stagger class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {featureCards.map(([title, copy, icon]) => (
+        <div data-motion="card" class="rounded-2xl bg-white p-6 shadow-sm" style="border: 2px solid transparent; background: linear-gradient(white, white) padding-box, linear-gradient(180deg, rgba(51, 40, 144, 0.8) 0%, rgba(185, 52, 185, 0.8) 100%) border-box;">
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#A34DA3]/10">
+            <Image src={icon} alt="" aria-hidden="true" class="h-5 w-5" />
+          </div>
+          <p class="text-sm font-semibold text-gray-900">{title}</p>
+          <p class="mt-1.5 text-sm leading-relaxed text-gray-500">{copy}</p>
+        </div>
+      ))}
+    </div>
+    <div class="mt-10 max-w-[520px] border-l-[6px] border-[#A34DA3] pl-8 sm:mt-12 sm:pl-10">
+      <p class="text-[2rem] font-bold leading-tight text-[#1f1f24] sm:text-[2.3rem]">Empiezas al instante</p>
+      <p class="mt-2 text-[1.15rem] font-semibold italic leading-snug text-[#a8a5a5] sm:text-[1.3rem]">Sin configuraciones largas.</p>
+    </div>
+  </div>
+</section>

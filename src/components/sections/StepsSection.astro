@@ -1,0 +1,49 @@
+---
+// LandingPage EcoNutrix
+// Author: Carlos Jaime Lopez Martinez
+// Fecha: 20-Abril-2026
+
+import { Image } from 'astro:assets';
+import stepProfileIcon from '../../assets/images/Icon (3).svg';
+import stepContextIcon from '../../assets/images/Group.svg';
+import stepResultIcon from '../../assets/images/Icon (2).svg';
+
+const stepsCardClass =
+  'rounded-3xl border-2 border-[#CE93CE1A] bg-[linear-gradient(241.64deg,rgba(255,255,255,0.105)_8.77%,rgba(121,121,121,0.045)_38.28%)] bg-[#0B0A23]/90 p-7 shadow-[0_12px_30px_rgba(6,8,26,0.35)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(6,8,26,0.45)]';
+---
+
+<section id="como-funciona" data-motion-section class="relative overflow-hidden bg-[#0D0A1A] py-20 lg:py-28">
+  <div data-parallax data-parallax-speed="0.1" class="pointer-events-none absolute right-[-120px] top-[10%] h-[320px] w-[320px] rounded-full opacity-[0.12] blur-3xl" style="background: radial-gradient(circle, rgba(163, 77, 163, 0.34) 0%, rgba(163, 77, 163, 0.12) 40%, rgba(13, 10, 26, 0) 72%);"></div>
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="mb-14 text-center">
+      <h2 data-motion="heading" class="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">Tres pasos. Sin pensar.</h2>
+      <p data-motion="text" style="--motion-delay: 90ms;" class="mt-4 text-base text-white/45">Tu primera decisión lista en 30 segundos</p>
+    </div>
+    <div data-motion-stagger class="grid gap-5 md:grid-cols-3">
+      <div data-motion="card" data-parallax data-parallax-speed="0.06" class={stepsCardClass}>
+        <div class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#A34DA3]/28">
+          <Image src={stepProfileIcon} alt="" aria-hidden="true" class="h-5 w-5" />
+        </div>
+        <span class="mt-7 block text-xs font-bold tracking-[0.15em] text-white/38">01</span>
+        <h3 class="mt-4 text-xl font-semibold leading-tight text-white sm:text-2xl">Tu perfil en poco tiempo</h3>
+        <p class="mt-2 text-sm leading-relaxed text-white/52 sm:text-lg">Sin formularios largos. Solo lo necesario.</p>
+      </div>
+      <div data-motion="card" data-parallax data-parallax-speed="0.09" class={stepsCardClass}>
+        <div class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#A34DA3]/28">
+          <Image src={stepContextIcon} alt="" aria-hidden="true" class="h-5 w-5" />
+        </div>
+        <span class="mt-7 block text-xs font-bold tracking-[0.15em] text-white/38">02</span>
+        <h3 class="mt-4 text-xl font-semibold leading-tight text-white sm:text-2xl">EcoNutrix entiende tu contexto</h3>
+        <p class="mt-2 text-sm leading-relaxed text-white/52 sm:text-lg">Incluyendo lo que tienes disponible</p>
+      </div>
+      <div data-motion="card" data-parallax data-parallax-speed="0.12" class={stepsCardClass}>
+        <div class="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#A34DA3]/28">
+          <Image src={stepResultIcon} alt="" aria-hidden="true" class="h-5 w-5" />
+        </div>
+        <span class="mt-7 block text-xs font-bold tracking-[0.15em] text-white/38">03</span>
+        <h3 class="mt-4 text-xl font-semibold leading-tight text-white sm:text-2xl">Recibes qué cocinar</h3>
+        <p class="mt-2 text-sm leading-relaxed text-white/52 sm:text-lg">Listo para actuar al instante.</p>
+      </div>
+    </div>
+  </div>
+</section>

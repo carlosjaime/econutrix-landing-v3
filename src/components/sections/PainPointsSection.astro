@@ -1,0 +1,73 @@
+---
+// LandingPage EcoNutrix
+// Author: Carlos Jaime Lopez Martinez
+// Fecha: 20-Abril-2026
+
+import { Image } from 'astro:assets';
+import planetaImg from '../../assets/images/Planeta.png';
+import painBrainIcon from '../../assets/images/Iconify-icon.svg';
+import painRepeatIcon from '../../assets/images/Iconify-icon (1).svg';
+import painUserMissIcon from '../../assets/images/Iconify-icon (2).svg';
+import painWasteIcon from '../../assets/images/Iconify-icon (3).svg';
+---
+
+<section id="beneficios" data-motion-section class="relative overflow-hidden bg-[#f7f6f6] py-14 sm:py-16 lg:py-24">
+  <div data-parallax data-parallax-speed="0.08" data-float="slow" class="pointer-events-none absolute bottom-[-110px] right-[-110px] h-[390px] w-[390px] select-none opacity-[0.07]">
+    <Image src={planetaImg} alt="" class="h-full w-full object-contain" />
+  </div>
+  <div class="relative mx-auto max-w-[1220px] px-6 lg:px-10">
+    <div class="max-w-[780px]">
+      <h2 data-motion="heading" class="text-[2.1rem] font-bold leading-[1.15] tracking-[-0.025em] text-[#1f1f24] sm:text-5xl lg:text-[3.6rem]">
+        Tomas más de 200 decisiones sobre comida cada día
+      </h2>
+      <p data-motion="text" style="--motion-delay: 90ms;" class="mt-5 max-w-[920px] text-[1rem] leading-[1.55] text-[#a7a3a3] sm:mt-6 sm:text-[1.13rem] lg:text-[1.3rem]">
+        La mayoría sin respuesta clara. El resultado: repetición, frustración, y hábitos que no van a ningún lado.
+      </p>
+    </div>
+    <div data-motion-stagger class="mt-8 grid gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2">
+      <div data-motion="card" class="flex min-h-[108px] items-start gap-4 rounded-2xl border border-[#eec0c0] bg-white px-4 py-4 sm:min-h-[122px] sm:rounded-3xl sm:px-6 sm:py-5">
+        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#f2eaea] sm:h-14 sm:w-14">
+          <Image src={painBrainIcon} alt="" aria-hidden="true" class="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
+        </div>
+        <div class="pt-1">
+          <p class="text-[1.4rem] font-semibold leading-tight text-[#252328] sm:text-[1.55rem]">Fatiga de decisión</p>
+          <p class="mt-1 text-[1rem] leading-snug text-[#aaa2a2] sm:text-[1.08rem]">Pensar qué cocinar todos los días agota</p>
+        </div>
+      </div>
+
+      <div data-motion="card" class="flex min-h-[108px] items-start gap-4 rounded-2xl border border-[#eec0c0] bg-white px-4 py-4 sm:min-h-[122px] sm:rounded-3xl sm:px-6 sm:py-5">
+        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#f2eaea] sm:h-14 sm:w-14">
+          <Image src={painRepeatIcon} alt="" aria-hidden="true" class="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
+        </div>
+        <div class="pt-1">
+          <p class="text-[1.4rem] font-semibold leading-tight text-[#252328] sm:text-[1.55rem]">Siempre lo mismo</p>
+          <p class="mt-1 text-[1rem] leading-snug text-[#aaa2a2] sm:text-[1.08rem]">Repites lo mismo sin darte cuenta</p>
+        </div>
+      </div>
+
+      <div data-motion="card" class="flex min-h-[108px] items-start gap-4 rounded-2xl border border-[#eec0c0] bg-white px-4 py-4 sm:min-h-[122px] sm:rounded-3xl sm:px-6 sm:py-5">
+        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#f2eaea] sm:h-14 sm:w-14">
+          <Image src={painUserMissIcon} alt="" aria-hidden="true" class="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
+        </div>
+        <div class="pt-1">
+          <p class="text-[1.4rem] font-semibold leading-tight text-[#252328] sm:text-[1.55rem]">No usas lo que tienes</p>
+          <p class="mt-1 text-[1rem] leading-snug text-[#aaa2a2] sm:text-[1.08rem]">Decides sin considerar lo que ya hay en tu cocina.</p>
+        </div>
+      </div>
+
+      <div data-motion="card" class="flex min-h-[108px] items-start gap-4 rounded-2xl border border-[#eec0c0] bg-white px-4 py-4 sm:min-h-[122px] sm:rounded-3xl sm:px-6 sm:py-5">
+        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#f2eaea] sm:h-14 sm:w-14">
+          <Image src={painWasteIcon} alt="" aria-hidden="true" class="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
+        </div>
+        <div class="pt-1">
+          <p class="text-[1.4rem] font-semibold leading-tight text-[#252328] sm:text-[1.55rem]">Pierdes comida</p>
+          <p class="mt-1 text-[1rem] leading-snug text-[#aaa2a2] sm:text-[1.08rem]">Alimentos que se vencen o nunca usas.</p>
+        </div>
+      </div>
+    </div>
+    <div data-motion="text" style="--motion-delay: 120ms;" class="mt-9 max-w-[640px] border-l-4 border-[#a34ca3] py-1 pl-5 sm:mt-10 sm:pl-7">
+      <p class="text-[1.9rem] font-semibold leading-tight text-[#1f1f24] sm:text-[2.35rem]">EcoNutrix toma esa decisión por ti.</p>
+      <p class="mt-1 text-[1rem] text-[#aba3a3] sm:text-[1.18rem]">Rápido y sin esfuerzo</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,715 @@
+---
+import { Image } from 'astro:assets';
+import logoEcoNutrix from '../assets/images/logo_econutrix.png';
+import heroBgSvg from '../assets/images/Section.svg';
+import menuIcon from '../assets/images/menu_hamburguer.png';
+
+const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
+---
+
+<section class="hero" aria-label="Hero principal EcoNutrix" data-motion-section>
+  <img src={heroBgSrc} alt="" aria-hidden="true" class="hero__bg" />
+
+  <!-- overlay curvo -->
+  <div class="hero__curve" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true" data-parallax data-parallax-speed="0.12"></div>
+
+  <!-- header -->
+  <header class="hero__header">
+    <div class="hero__header-inner">
+      <a href="/" class="brand" aria-label="EcoNutrix inicio">
+        <Image src={logoEcoNutrix} alt="EcoNutrix" class="brand__logo" loading="eager" fetchpriority="high" />
+      </a>
+
+      <nav class="hero__nav" aria-label="Navegación principal">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#beneficios" class="is-active">Beneficios</a>
+        <a href="#acceso">Acceso anticipado</a>
+      </nav>
+
+      <a href="#acceso" class="btn btn--top">Reservar acceso</a>
+
+      <button class="hero__menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
+        <Image src={menuIcon} alt="" aria-hidden="true" class="hero__menu-icon" loading="eager" />
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hero__mobile-panel" hidden>
+      <nav class="hero__mobile-nav" aria-label="Navegación principal móvil">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#acceso">Acceso anticipado</a>
+      </nav>
+      <a href="#acceso" class="btn btn--mobile-cta">Reservar acceso</a>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <div class="hero__content-wrap">
+    <div class="hero__content">
+      <h1>
+        En 30 segundos
+        <br />
+        sabes qué cocinar hoy
+      </h1>
+
+      <p class="hero__subtitle">
+        EcoNutrix analiza quién eres y te da una respuesta al instante.
+        <br />
+        Sin pensar, sin perder tiempo.
+      </p>
+
+      <div class="hero__actions">
+        <a href="#acceso" class="btn btn--primary">
+          Crear mi plan ahora
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+
+        <a href="#como-funciona" class="btn btn--secondary">Ver cómo funciona</a>
+      </div>
+
+      <p class="hero__proof">Más de +1.000 personas buscan dejar de decidir cada día</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const heroRoot = document.querySelector('.hero');
+  const headerEl = heroRoot?.querySelector('.hero__header');
+  const headerInner = heroRoot?.querySelector('.hero__header-inner');
+  const toggleBtn = heroRoot?.querySelector('.hero__menu-toggle');
+  const mobileMenu = heroRoot?.querySelector('#mobile-menu');
+  const mobileLinks = heroRoot?.querySelectorAll('.hero__mobile-nav a, .btn--mobile-cta');
+
+  const updateStickyNavbar = () => {
+    if (!heroRoot || !headerEl || !headerInner) return;
+    const heroHeight = heroRoot.offsetHeight;
+    const triggerPoint = heroHeight * 0.8;
+    const passedHero = window.scrollY > triggerPoint;
+    headerEl.classList.toggle('is-sticky', passedHero);
+    heroRoot.classList.toggle('nav-sticky-active', passedHero);
+  };
+
+  if (toggleBtn && mobileMenu) {
+    const closeMenu = () => {
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('hidden', '');
+      heroRoot.classList.remove('menu-open');
+    };
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!isOpen));
+      if (isOpen) {
+        mobileMenu.setAttribute('hidden', '');
+        heroRoot.classList.remove('menu-open');
+      } else {
+        mobileMenu.removeAttribute('hidden');
+        heroRoot.classList.add('menu-open');
+      }
+    });
+
+    mobileLinks?.forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  updateStickyNavbar();
+  window.addEventListener('scroll', updateStickyNavbar, { passive: true });
+  window.addEventListener('resize', updateStickyNavbar);
+</script>
+
+<style>
+  :global(:root) {
+    --hero-bg: #05061f;
+    --hero-surface: rgba(7, 9, 34, 0.62);
+    --hero-border: rgba(255, 255, 255, 0.08);
+    --hero-text: #f4f6ff;
+    --hero-muted: rgba(233, 237, 255, 0.9);
+    --hero-soft: rgba(225, 229, 248, 0.62);
+    --hero-primary: #b454b5;
+    --hero-primary-hover: #a146a2;
+    --hero-focus: #b9ff8c;
+  }
+
+  .hero {
+    position: relative;
+    isolation: isolate;
+    min-height: 720px;
+    width: 100%;
+    overflow: clip;
+    background: var(--hero-bg);
+    color: var(--hero-text);
+  }
+
+  .hero.nav-sticky-active {
+    isolation: auto;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 100% center;
+  }
+
+  .hero__curve {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: -395px;
+    width: 1210px;
+    height: 924px;
+    transform: translateY(-50%);
+    border-radius: 999px;
+    background: linear-gradient(180deg, #090b32 0%, #060824 62%, #36003f 100%);
+  }
+
+  .hero__glow {
+    position: absolute;
+    z-index: -1;
+    inset: auto auto -18% 18%;
+    width: 560px;
+    height: 560px;
+    border-radius: 999px;
+    background:
+      radial-gradient(circle, rgba(172, 66, 176, 0.28) 0%, rgba(172, 66, 176, 0.12) 28%, rgba(172, 66, 176, 0.04) 48%, rgba(172, 66, 176, 0) 68%);
+    filter: blur(12px);
+    pointer-events: none;
+  }
+
+
+  .hero__header {
+    position: absolute;
+    inset: 0 0 auto 0;
+    z-index: 10;
+  }
+
+  .hero__header.is-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    animation: hero-slide-down 320ms cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 9999;
+  }
+
+  @keyframes hero-slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero__header-inner {
+    max-width: 1680px;
+    margin-inline: auto;
+    height: 88px;
+    padding-inline: clamp(20px, 4vw, 128px);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(180deg, rgba(9, 10, 37, 0.78) 0%, rgba(9, 10, 37, 0.56) 100%);
+    border-bottom: 1px solid var(--hero-border);
+    backdrop-filter: blur(8px) saturate(115%);
+    -webkit-backdrop-filter: blur(8px) saturate(115%);
+  }
+
+  .hero__mobile-panel {
+    display: none;
+    margin: 8px 14px 0;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(7, 8, 32, 0.94);
+    box-shadow: 0 20px 40px rgba(3, 4, 18, 0.5);
+    padding: 14px;
+  }
+
+  .hero__mobile-nav {
+    display: grid;
+    gap: 4px;
+  }
+
+  .hero__mobile-nav a {
+    color: rgba(245, 247, 255, 0.94);
+    text-decoration: none;
+    font: 700 0.98rem/1.2 Manrope, "Segoe UI", sans-serif;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .hero__mobile-nav a:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .btn--mobile-cta {
+    width: 100%;
+    margin-top: 10px;
+    min-height: 48px;
+    color: #fff;
+    background: var(--hero-primary);
+    box-shadow: 0 10px 26px rgba(180, 84, 181, 0.3);
+  }
+
+  .brand {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .brand__logo {
+    width: 178px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .hero__nav {
+    justify-self: center;
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(20px, 2.8vw, 56px);
+  }
+
+  .hero__nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font: 700 1rem/1.2 Manrope, "Segoe UI", sans-serif;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+  }
+
+  .hero__nav a:hover {
+    color: #fff;
+  }
+
+  .hero__nav a.is-active {
+    color: #fff;
+    text-shadow: 0 0 14px rgba(255, 255, 255, 0.32);
+  }
+
+  .btn {
+    border: 0;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    font: 700 1rem/1.2 Manrope, "Segoe UI", sans-serif;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .btn:focus-visible,
+  .hero__nav a:focus-visible,
+  .brand:focus-visible {
+    outline: 2px solid var(--hero-focus);
+    outline-offset: 3px;
+    border-radius: 12px;
+  }
+
+  .btn--top {
+    justify-self: end;
+    color: #fff;
+    background: var(--hero-primary);
+    min-width: 208px;
+    height: 56px;
+    box-shadow: 0 10px 28px rgba(180, 84, 181, 0.28);
+  }
+
+  .btn--top:hover {
+    background: var(--hero-primary-hover);
+    transform: translateY(-1px);
+  }
+
+  .hero__content-wrap {
+    min-height: inherit;
+    display: grid;
+    align-items: center;
+    max-width: 1680px;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 4vw, 128px);
+    padding-top: calc(88px + clamp(34px, 6vh, 72px));
+    padding-bottom: clamp(24px, 5vh, 56px);
+  }
+
+  .hero__content {
+    width: min(100%, 560px);
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-family: Manrope, Inter, "Segoe UI", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
+    font-size: clamp(2rem, 3.1vw, 3.55rem);
+    text-wrap: balance;
+  }
+
+  .hero__subtitle {
+    margin-top: 28px;
+    margin-bottom: 0;
+    color: var(--hero-muted);
+    font-family: Manrope, "Segoe UI", sans-serif;
+    font-size: clamp(1rem, 1.1vw, 1.23rem);
+    line-height: 1.45;
+    font-style: italic;
+  }
+
+  .hero__actions {
+    margin-top: 32px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn--primary {
+    min-height: 68px;
+    padding: 0 30px;
+    color: #fff;
+    background: linear-gradient(180deg, #bf62c0 0%, #a64aa7 100%);
+    box-shadow: 0 12px 34px rgba(180, 84, 181, 0.42), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+    border-radius: 16px;
+    gap: 10px;
+    font-size: 1.02rem;
+  }
+
+  .btn--primary svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentcolor;
+    stroke-width: 2.2;
+    fill: none;
+  }
+
+  .btn--primary:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(180deg, #c86cca 0%, #a949ab 100%);
+    box-shadow: 0 16px 40px rgba(180, 84, 181, 0.5);
+  }
+
+  .btn--secondary {
+    min-height: 68px;
+    padding: 0 34px;
+    color: #f7f8ff;
+    background: rgba(15, 17, 53, 0.48);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    font-size: 1.02rem;
+  }
+
+  .btn--secondary:hover {
+    background: rgba(20, 23, 68, 0.62);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .hero__proof {
+    margin-top: 44px;
+    margin-bottom: 0;
+    color: var(--hero-soft);
+    font: italic 400 clamp(1rem, 1vw, 1.16rem) / 1.35 Manrope, "Segoe UI", sans-serif;
+  }
+
+  .hero__menu-toggle {
+    display: none;
+    justify-self: end;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #bf62c0 0%, #a64aa7 100%);
+    box-shadow: 0 8px 20px rgba(180, 84, 181, 0.32);
+    padding: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero__menu-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* responsive breakpoints */
+  @media (max-width: 1100px) {
+    .hero {
+      min-height: min(84svh, 760px);
+    }
+
+    .hero__curve {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+
+    .hero__glow {
+      inset: auto auto -12% 8%;
+      width: 420px;
+      height: 420px;
+      opacity: 0.9;
+    }
+
+    .hero__header-inner {
+      grid-template-columns: 1fr auto;
+      height: 80px;
+    }
+
+    .hero__nav {
+      display: none;
+    }
+
+    .btn--top {
+      display: none;
+    }
+
+    .hero__menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero.menu-open .hero__mobile-panel {
+      display: block;
+    }
+
+    .hero__content-wrap {
+      padding-top: calc(80px + 34px);
+    }
+
+    .hero__bg {
+      object-position: 100% center;
+    }
+
+    .hero__proof {
+      display: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    /* ── Layout: dark card on top + food image at bottom ── */
+    .hero {
+      min-height: 920px;
+      background: var(--hero-bg);
+      overflow: hidden;
+    }
+
+    /* Dark rounded card covers the content area */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      z-index: -1;
+      height: 610px;
+      background: linear-gradient(180deg, #060822 0%, #070921 80%, #2c0038 100%);
+      border-radius: 0 0 44px 44px;
+      pointer-events: none;
+    }
+
+    /* Bottom fade: blends hero with next section */
+    .hero::after {
+      display: block;
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: -1;
+      height: 200px;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(247, 246, 246, 0.55) 35%,
+        #f7f6f6 65%
+      );
+      pointer-events: none;
+    }
+
+    .hero__curve {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+
+    .hero__glow {
+      display: none;
+    }
+
+    /* Header — transparent, part of the dark card */
+    .hero__header-inner {
+      height: 74px;
+      padding-inline: 20px;
+      background: transparent;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .brand__logo {
+      width: 142px;
+    }
+
+    /* Content sits on top of dark card */
+    .hero__content-wrap {
+      min-height: auto;
+      padding-top: calc(74px + 24px);
+      padding-bottom: 36px;
+      padding-inline: 24px;
+      align-items: start;
+      position: relative;
+      z-index: 0;
+    }
+
+    .hero__content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero__bg {
+      height: 500px;
+      inset: auto 0 0 0;
+      object-position: 100% center;
+    }
+
+    /* Large bold left-aligned heading */
+    .hero h1 {
+      font-size: clamp(1.95rem, 8.6vw, 2.75rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      max-width: none;
+      text-align: left;
+      text-wrap: initial;
+    }
+
+    .hero__subtitle {
+      margin-top: 18px;
+      font-size: 0.96rem;
+      line-height: 1.55;
+      max-width: none;
+      text-align: left;
+      color: rgba(233, 237, 255, 0.88);
+      font-style: normal;
+    }
+
+    .hero__subtitle br {
+      display: none;
+    }
+
+    .hero__actions {
+      margin-top: 26px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .btn--primary {
+      width: auto;
+      min-height: 62px;
+      border-radius: 14px;
+      font-size: 1rem;
+      padding: 0 28px;
+    }
+
+    .btn--secondary {
+      width: auto;
+      min-height: 60px;
+      border-radius: 14px;
+      font-size: 1rem;
+      padding: 0 28px;
+    }
+
+    /* Show proof text — override 1100px rule */
+    .hero__proof {
+      display: block;
+      margin-top: 32px;
+      font-size: 0.83rem;
+      text-align: center;
+      color: rgba(225, 229, 248, 0.56);
+      white-space: normal;
+      overflow: visible;
+      text-overflow: unset;
+      padding-left: 0;
+      width: 100%;
+    }
+
+    /* Hamburger */
+    .hero__menu-toggle {
+      width: 52px;
+      height: 52px;
+      padding: 10px;
+    }
+
+    .hero__mobile-panel {
+      margin-inline: 20px;
+      margin-top: 10px;
+      padding: 14px;
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+  }
+
+  @media (max-width: 430px) {
+    .hero {
+      min-height: 860px;
+    }
+
+    .hero::before {
+      height: 570px;
+    }
+
+    .hero__bg {
+      height: 460px;
+    }
+
+    .hero__header-inner {
+      height: 70px;
+      padding-inline: 18px;
+    }
+
+    .brand__logo {
+      width: 130px;
+    }
+
+    .hero__content-wrap {
+      padding-top: calc(70px + 22px);
+      padding-inline: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 8.4vw, 2.6rem);
+    }
+
+    .hero__subtitle {
+      font-size: 0.9rem;
+    }
+
+    .btn--primary {
+      min-height: 60px;
+    }
+
+    .btn--secondary {
+      min-height: 58px;
+    }
+
+    .hero__menu-toggle {
+      width: 48px;
+      height: 48px;
+    }
+  }
+</style>

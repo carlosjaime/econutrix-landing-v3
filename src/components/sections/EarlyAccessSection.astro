@@ -1,0 +1,105 @@
+---
+// LandingPage EcoNutrix
+// Author: Carlos Jaime Lopez Martinez
+// Fecha: 20-Abril-2026
+
+import { Image } from 'astro:assets';
+import appstoreImg from '../../assets/images/appstore.png';
+import googleplayImg from '../../assets/images/googleplay.png';
+import {
+  earlyAccessBetaItems,
+  earlyAccessFullItems,
+  showEarlyAccessCards,
+  showEarlyAccessPrices,
+  showStoreBadges,
+} from '../../data/landing';
+---
+
+<section id="acceso" data-motion-section class="relative overflow-hidden bg-[#f6f6f7] py-16 sm:py-20 lg:py-24">
+  <div class="relative mx-auto max-w-[1160px] px-6 lg:px-10">
+    <div class="text-center">
+      <h2 data-motion="heading" class="text-[2rem] font-extrabold leading-[1.14] tracking-[-0.02em] text-[#121319] sm:text-4xl lg:text-[3.45rem]">
+        Sé parte del acceso anticipado a
+        <span class="bg-gradient-to-b from-[#332890] to-[#A34DA3] bg-clip-text text-transparent"> EcoNutrix</span>
+      </h2>
+      <p data-motion="text" style="--motion-delay: 90ms;" class="mt-4 text-base font-bold italic text-[#a09e9f] sm:text-lg">
+        Sé los primeros usuarios en dejar de pensar qué cocinar todos los días
+      </p>
+    </div>
+
+    <div data-motion="text" style="--motion-delay: 140ms;" class="mx-auto mt-6 max-w-[430px] rounded-lg border border-dashed border-[#e9d031] bg-[#fce345] px-4 py-3 text-center sm:mt-7 sm:max-w-[520px]">
+      <p class="text-sm font-semibold italic text-[#1e1e1e] sm:text-[1.02rem]">
+        🎁 Los primeros usuarios tendrán acceso preferencial 🎁
+        <br />
+        a futuras versiones sin costo adicional.
+      </p>
+    </div>
+
+    {showEarlyAccessCards && (
+      <div data-motion-stagger class="mx-auto mt-10 grid max-w-[760px] gap-6 md:grid-cols-2">
+      <article aria-disabled="true" data-motion="card" data-parallax data-parallax-speed="0.08" class="pointer-events-none select-none rounded-3xl border border-[#e5e4e8] bg-white px-6 py-7 opacity-65 saturate-75 shadow-[0_6px_24px_rgba(25,24,29,0.04)] sm:px-8 sm:py-8">
+        <p class="text-[0.77rem] font-bold uppercase tracking-[0.16em] text-[#b05ab1]">Acceso anticipado (beta)</p>
+        {showEarlyAccessPrices && (
+          <>
+            <p class="mt-5 text-[2.6rem] font-extrabold leading-none text-[#202126] sm:text-[3rem]">CLP $<span data-counter="4990">4.990</span></p>
+            <p class="mt-3 text-[1.02rem] italic text-[#a3a1a6]">Pago único. Sin suscripción. Acceso inmediato</p>
+          </>
+        )}
+        {!showEarlyAccessPrices && <p class="mt-5 text-[1.02rem] italic text-[#5a5861]">Acceso temprano para probar la experiencia completa desde el primer día.</p>}
+        <ul class="mt-6 space-y-3">
+          {earlyAccessBetaItems.map((item) => (
+            <li class="flex items-center gap-3 text-[1.03rem] italic text-[#44424b]">
+              <svg class="h-4 w-4 shrink-0 text-[#b45ab4]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.6"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <span aria-disabled="true" class="mt-7 inline-flex w-full cursor-not-allowed items-center justify-center rounded-xl border border-[#d8d6dc] bg-[#f1f1f4] px-4 py-3.5 text-[1.02rem] font-semibold text-[#7c7b84] opacity-80 pointer-events-none select-none">
+          Crear mi plan ahora
+        </span>
+      </article>
+
+      <article aria-disabled="true" data-motion="card" data-parallax data-parallax-speed="0.12" class="pointer-events-none select-none relative rounded-3xl border-2 border-[#b44eb6] bg-white px-6 py-7 opacity-65 saturate-75 shadow-[0_10px_30px_rgba(180,78,182,0.10)] sm:px-8 sm:py-8">
+        <span class="absolute left-1/2 -top-4 -translate-x-1/2 rounded-full bg-[#a74ca8] px-7 py-2 text-[0.95rem] font-semibold text-white shadow-[0_8px_16px_rgba(167,76,168,0.34)]">Recomendado</span>
+        <p class="text-[0.77rem] font-bold uppercase tracking-[0.16em] text-[#b05ab1]">Acceso completo</p>
+        {showEarlyAccessPrices && (
+          <>
+            <p class="mt-5 text-[2.6rem] font-extrabold leading-none text-[#202126] sm:text-[3rem]">CLP $<span data-counter="9990">9.990</span></p>
+            <p class="mt-3 text-[1.02rem] italic text-[#a3a1a6]">Pago único. Sin suscripción. Acceso inmediato</p>
+          </>
+        )}
+        {!showEarlyAccessPrices && <p class="mt-5 text-[1.02rem] italic text-[#5a5861]">Ideal si quieres prioridad y beneficios exclusivos por unirte en esta etapa.</p>}
+        <ul class="mt-6 space-y-3">
+          {earlyAccessFullItems.map((item) => (
+            <li class="flex items-center gap-3 text-[1.03rem] italic text-[#44424b]">
+              <svg class="h-4 w-4 shrink-0 text-[#b45ab4]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.6"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <span aria-disabled="true" class="mt-7 inline-flex w-full cursor-not-allowed items-center justify-center rounded-xl bg-[#b894c7] px-4 py-3.5 text-[1.02rem] font-semibold text-white/85 opacity-80 pointer-events-none select-none">
+          Obtener acceso directo
+        </span>
+      </article>
+      </div>
+    )}
+
+    {showStoreBadges && (
+      <div class="mt-10 text-center">
+        <p data-motion="heading" class="text-[1.55rem] font-bold text-[#171923] sm:text-[1.75rem]">Disponible en:</p>
+        <div data-motion-stagger class="mt-5 flex flex-wrap items-center justify-center gap-5 sm:gap-7">
+          <div data-parallax data-parallax-speed="0.12" class="inline-flex">
+            <a data-motion="button" href="#" class="inline-flex items-center justify-center rounded-lg transition-opacity hover:opacity-95">
+              <Image src={appstoreImg} alt="App Store" class="h-[4.8rem] w-auto object-contain sm:h-[5.15rem]" />
+            </a>
+          </div>
+          <div data-parallax data-parallax-speed="0.16" class="inline-flex">
+            <a data-motion="button" href="#" class="inline-flex items-center justify-center rounded-lg transition-opacity hover:opacity-95">
+              <Image src={googleplayImg} alt="Google Play" class="h-[4.8rem] w-auto object-contain sm:h-[5.15rem]" />
+            </a>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+</section>

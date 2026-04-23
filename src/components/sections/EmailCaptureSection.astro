@@ -1,0 +1,423 @@
+<!-- LandingPage EcoNutrix | Author: Carlos Jaime Lopez Martinez | Fecha: 20-Abril-2026 -->
+<section data-motion-section class="bg-[#f6f6f7] pb-16 pt-8 sm:pb-20">
+  <div data-parallax data-parallax-speed="0.05" class="mx-auto max-w-[980px] px-6 text-center lg:px-10">
+    <h3 data-motion="heading" class="text-[2.1rem] font-bold leading-tight text-[#171923] sm:text-[2.5rem]">¿Prefieres probarlo primero?</h3>
+    <p data-motion="text" style="--motion-delay: 90ms;" class="mt-3 text-[1.05rem] text-[#676f82] sm:text-[1.1rem]">
+      Déjanos tu email y te avisaremos cuando abramos nuevos cupos.
+    </p>
+
+    <form id="trial-email-form" data-motion="button" style="--motion-delay: 140ms;" novalidate class="mx-auto mt-7 flex max-w-[880px] flex-col items-stretch gap-3 sm:flex-row sm:gap-4">
+      <label class="sr-only" for="trial-email">Ingresa tu email</label>
+      <div id="trial-email-wrap" class="email-input-wrap">
+        <input
+          id="trial-email"
+          type="email"
+          name="email"
+          placeholder="Ingresa tu email"
+          autocomplete="email"
+          inputmode="email"
+          required
+          class="h-14 w-full rounded-2xl border border-[#cfd4df] bg-white pl-5 pr-12 text-[#1f2533] placeholder:text-[#9aa1af] outline-none focus:border-[#a74ca8] focus:ring-2 focus:ring-[#a74ca8]/40"
+        />
+        <span id="trial-email-status" class="email-status-indicator" data-state="idle" aria-hidden="true">
+          <span class="email-status-icon icon-loading">
+            <span class="email-spinner"></span>
+          </span>
+          <span class="email-status-icon icon-success">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7 12.5l3 3L17 8.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="email-status-icon icon-error">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 8l8 8M16 8l-8 8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          </span>
+        </span>
+      </div>
+      <button type="submit" class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-[#a74ca8] px-8 text-[1.02rem] font-semibold text-white shadow-[0_12px_26px_rgba(167,76,168,0.3)] hover:bg-[#934294] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a74ca8]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f6f6f7] sm:w-auto sm:min-w-[220px] sm:px-9">
+        Quiero acceso
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </button>
+    </form>
+    <p id="trial-email-feedback" class="email-feedback" aria-live="polite" role="status"></p>
+
+    <p data-motion="text" style="--motion-delay: 180ms;" class="mt-6 text-[1.04rem] font-semibold italic text-[#72798a]">Sin spam. Solo novedades importantes.</p>
+  </div>
+</section>
+
+<div id="waitlist-modal" class="waitlist-modal" hidden>
+  <div class="waitlist-modal__backdrop" data-close-modal></div>
+  <div class="waitlist-modal__panel" role="dialog" aria-modal="true" aria-labelledby="waitlist-modal-title">
+    <h4 id="waitlist-modal-title" class="waitlist-modal__title">¡Suscripción confirmada!</h4>
+    <p id="waitlist-modal-message" class="waitlist-modal__message">
+      Te has suscrito para ser de los primeros en probar la app EcoNutrix.
+    </p>
+    <button id="waitlist-modal-close" type="button" class="waitlist-modal__close">Entendido</button>
+  </div>
+</div>
+
+<script>
+  const emailForm = document.querySelector('#trial-email-form');
+  const emailInput = document.querySelector('#trial-email');
+  const emailInputWrap = document.querySelector('#trial-email-wrap');
+  const statusIndicator = document.querySelector('#trial-email-status');
+  const feedback = document.querySelector('#trial-email-feedback');
+  const submitButton = emailForm?.querySelector('button[type="submit"]');
+  const modal = document.querySelector('#waitlist-modal');
+  const modalMessage = document.querySelector('#waitlist-modal-message');
+  const modalCloseButton = document.querySelector('#waitlist-modal-close');
+  const modalCloseTriggers = document.querySelectorAll('[data-close-modal]');
+  let successFeedbackTimeout = null;
+
+  const WAITLIST_PROXY_URL = '/api/waitlist';
+  const WAITLIST_FALLBACK_URL = 'https://api.econutrix.dvlsft.dev/v1/waitlist';
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+  const setStatus = (state) => {
+    if (!statusIndicator || !emailInput || !emailInputWrap) return;
+    statusIndicator.setAttribute('data-state', state);
+    emailInputWrap.classList.remove('is-loading', 'is-success', 'is-error');
+    if (state === 'loading') emailInputWrap.classList.add('is-loading');
+    if (state === 'success') emailInputWrap.classList.add('is-success');
+    if (state === 'error') emailInputWrap.classList.add('is-error');
+    emailInput.setAttribute('aria-invalid', String(state === 'error'));
+  };
+
+  const setFeedback = (message, type) => {
+    if (!feedback || !emailInput) return;
+    feedback.textContent = message;
+    feedback.classList.remove('is-error', 'is-success');
+    if (type) feedback.classList.add(type === 'error' ? 'is-error' : 'is-success');
+    emailInput.classList.remove('email-input-error');
+    if (type === 'error') emailInput.classList.add('email-input-error');
+  };
+
+  const setSubmitting = (isSubmitting) => {
+    if (!submitButton) return;
+    submitButton.disabled = isSubmitting;
+    submitButton.classList.toggle('is-loading', isSubmitting);
+    submitButton.setAttribute('aria-busy', String(isSubmitting));
+    if (isSubmitting) setStatus('loading');
+  };
+
+  const validateEmail = (value) => {
+    if (!value) return 'Ingresa tu email.';
+    if (value.includes(' ')) return 'El email no puede contener espacios.';
+    if (!value.includes('@')) return 'Falta el símbolo @ en tu email.';
+    const domain = value.split('@')[1] ?? '';
+    if (!domain || !domain.includes('.')) return 'Falta una extensión de dominio (ej: .com, .mx, .org).';
+    const tld = domain.split('.').pop() ?? '';
+    if (tld.length < 2) return 'La extensión del dominio no es válida.';
+    if (!emailRegex.test(value)) return 'El formato del email no es válido.';
+    return null;
+  };
+
+  const openModal = (message) => {
+    if (!modal || !modalMessage) return;
+    modalMessage.textContent = message;
+    modal.removeAttribute('hidden');
+    document.body.classList.add('waitlist-modal-open');
+    modalCloseButton?.focus();
+  };
+
+  const closeModal = () => {
+    if (!modal) return;
+    modal.setAttribute('hidden', '');
+    document.body.classList.remove('waitlist-modal-open');
+
+    if (feedback?.classList.contains('is-success')) {
+      if (successFeedbackTimeout) clearTimeout(successFeedbackTimeout);
+      successFeedbackTimeout = setTimeout(() => {
+        setFeedback('', null);
+        setStatus('idle');
+      }, 2200);
+    }
+  };
+
+  modalCloseTriggers.forEach((element) => {
+    element.addEventListener('click', closeModal);
+  });
+
+  modalCloseButton?.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeModal();
+  });
+
+  emailForm?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!emailInput) return;
+
+    const value = emailInput.value.trim();
+    const validationError = validateEmail(value);
+
+    if (validationError) {
+      setStatus('error');
+      setFeedback(validationError, 'error');
+      return;
+    }
+
+    setSubmitting(true);
+    setFeedback('', null);
+
+    try {
+      let response = await fetch(WAITLIST_PROXY_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: value }),
+      });
+
+      // Fallback directo por si el deploy no expone el endpoint server-side.
+      if (response.status === 404 || response.status === 405) {
+        response = await fetch(WAITLIST_FALLBACK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: value }),
+        });
+      }
+
+      let payload = {};
+      try {
+        payload = await response.json();
+      } catch {
+        payload = {};
+      }
+
+      if (response.status === 202) {
+        const message = payload?.message ?? 'Te avisaremos cuando estemos listos.';
+        setStatus('success');
+        setFeedback('Su correo fue enviado correctamente', 'success');
+        emailInput.value = '';
+        openModal(`Te has suscrito para ser de los primeros en probar la app EcoNutrix. ${message}`);
+        return;
+      }
+
+      if (response.status === 422) {
+        setStatus('error');
+        setFeedback(payload?.error ?? 'Email inválido.', 'error');
+        return;
+      }
+
+      if (response.status === 429) {
+        setStatus('error');
+        setFeedback(payload?.error ?? 'Límite de solicitudes excedido. Intenta más tarde.', 'error');
+        return;
+      }
+
+      setStatus('error');
+      setFeedback('Disculpe, hubo un error inesperado en el envío', 'error');
+    } catch {
+      setStatus('error');
+      setFeedback('Disculpe, hubo un error inesperado en el envío', 'error');
+    } finally {
+      setSubmitting(false);
+    }
+  });
+
+  emailInput?.addEventListener('input', () => {
+    const value = emailInput?.value.trim() ?? '';
+    if (!value) {
+      setStatus('idle');
+      setFeedback('', null);
+      return;
+    }
+    if (feedback?.classList.contains('is-error')) {
+      setStatus('idle');
+      setFeedback('', null);
+    }
+  });
+</script>
+
+<style>
+  .email-input-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .email-status-indicator {
+    pointer-events: none;
+    position: absolute;
+    right: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.45rem;
+    width: 1.45rem;
+  }
+
+  .email-status-icon {
+    display: none;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+  }
+
+  .email-status-icon svg {
+    height: 0.9rem;
+    width: 0.9rem;
+  }
+
+  .email-status-indicator[data-state='loading'] .icon-loading,
+  .email-status-indicator[data-state='success'] .icon-success,
+  .email-status-indicator[data-state='error'] .icon-error {
+    display: inline-flex;
+  }
+
+  .icon-loading {
+    background: #fff;
+    border: 1px solid rgba(136, 136, 136, 0.28);
+  }
+
+  .email-spinner {
+    height: 0.88rem;
+    width: 0.88rem;
+    border-radius: 999px;
+    border: 2.3px solid #8a8a8a;
+    border-right-color: transparent;
+    animation: email-spin 0.78s linear infinite;
+  }
+
+  .icon-success {
+    background: #2ca89a;
+    color: #fff;
+  }
+
+  .icon-error {
+    background: #df4343;
+    color: #fff;
+  }
+
+  .email-input-wrap.is-success #trial-email {
+    border-color: rgba(44, 168, 154, 0.42);
+    box-shadow: 0 0 0 3px rgba(44, 168, 154, 0.14);
+  }
+
+  .email-input-wrap.is-error #trial-email {
+    border-color: rgba(188, 57, 93, 0.62);
+    box-shadow: 0 0 0 3px rgba(188, 57, 93, 0.15);
+  }
+
+  .email-feedback {
+    margin: 0.7rem auto 0;
+    min-height: 1.35rem;
+    max-width: 880px;
+    padding: 0;
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.005em;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 180ms ease, transform 180ms ease, background-color 180ms ease, color 180ms ease;
+  }
+
+  .email-feedback.is-error,
+  .email-feedback.is-success {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .email-feedback.is-error {
+    color: #df4343;
+  }
+
+  .email-feedback.is-success {
+    color: #1ea7a3;
+  }
+
+  #trial-email-form button[disabled] {
+    opacity: 0.78;
+    cursor: wait;
+  }
+
+  #trial-email-form button.is-loading {
+    filter: saturate(0.88);
+  }
+
+  @keyframes email-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .waitlist-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+  }
+
+  .waitlist-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 11, 24, 0.62);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+
+  .waitlist-modal__panel {
+    position: relative;
+    width: min(100%, 560px);
+    border-radius: 22px;
+    border: 1px solid rgba(164, 76, 166, 0.24);
+    background: linear-gradient(180deg, #ffffff 0%, #fbf8ff 100%);
+    box-shadow: 0 26px 56px rgba(16, 20, 46, 0.28);
+    padding: 1.4rem 1.25rem 1.2rem;
+    text-align: center;
+  }
+
+  .waitlist-modal__title {
+    margin: 0;
+    font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+    font-weight: 800;
+    color: #1b1e2e;
+  }
+
+  .waitlist-modal__message {
+    margin: 0.75rem 0 1.2rem;
+    font-size: clamp(0.96rem, 1.7vw, 1.08rem);
+    line-height: 1.48;
+    color: #5d6378;
+  }
+
+  .waitlist-modal__close {
+    border: 0;
+    border-radius: 14px;
+    min-height: 46px;
+    min-width: 140px;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(180deg, #b45ab4 0%, #9f4aa2 100%);
+    box-shadow: 0 10px 22px rgba(159, 74, 162, 0.33);
+    cursor: pointer;
+  }
+
+  .waitlist-modal__close:hover {
+    filter: brightness(0.98);
+  }
+
+  :global(body.waitlist-modal-open) {
+    overflow: hidden;
+  }
+
+  @media (max-width: 640px) {
+    .email-feedback {
+      font-size: 0.88rem;
+      border-radius: 16px;
+      padding: 0.62rem 0.84rem;
+    }
+
+    .waitlist-modal__panel {
+      border-radius: 18px;
+      padding: 1.15rem 1rem 1rem;
+    }
+
+    .waitlist-modal__close {
+      width: 100%;
+    }
+  }
+</style>
