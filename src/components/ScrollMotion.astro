@@ -154,21 +154,6 @@
 
 
 /* ═══════════════════════════════════════════════════════════════
-   GLOW PULSE — botón CTA principal
-═══════════════════════════════════════════════════════════════ */
-
-@keyframes sm-glow-pulse {
-  0%, 100% { box-shadow: 0 12px 34px rgba(180,84,181,0.42), 0 0 0 1px rgba(255,255,255,0.08) inset; }
-  50%       { box-shadow: 0 18px 48px rgba(180,84,181,0.68), 0 0 0 1px rgba(255,255,255,0.14) inset, 0 0 28px rgba(180,84,181,0.3); }
-}
-
-.btn--primary {
-  animation: sm-glow-pulse 3s ease-in-out infinite;
-}
-.btn--primary:hover { animation-play-state: paused; }
-
-
-/* ═══════════════════════════════════════════════════════════════
    CARD HOVER — lift suave
 ═══════════════════════════════════════════════════════════════ */
 
@@ -176,13 +161,7 @@
   transition:
     opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.5s ease,
-    box-shadow 0.3s ease;
-}
-
-[data-motion="card"].is-visible:hover {
-  transform: translateY(-6px) scale(1.015) !important;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
+    filter 0.5s ease;
 }
 
 
@@ -226,7 +205,7 @@ article[data-motion="card"]:hover::before {
     filter: none !important;
     transition: none !important;
   }
-  [data-float], .btn--primary {
+  [data-float] {
     animation: none !important;
   }
 }
@@ -265,24 +244,6 @@ article[data-motion="card"]:hover::before {
     onScroll();
   }
 
-  // ── Tilt 3D en cards ──────────────────────────────────────────
-  function initTilt() {
-    const cards = document.querySelectorAll<HTMLElement>('[data-motion="card"]');
-
-    cards.forEach((card) => {
-      card.addEventListener('mousemove', (e: MouseEvent) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width  - 0.5;
-        const y = (e.clientY - rect.top)  / rect.height - 0.5;
-        card.style.transform = `translateY(-6px) scale(1.015) perspective(700px) rotateX(${y * -8}deg) rotateY(${x * 8}deg)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
-  }
-
   // ── Contador animado ──────────────────────────────────────────
   function initCounters() {
     const counters = document.querySelectorAll<HTMLElement>('[data-counter]');
@@ -314,29 +275,9 @@ article[data-motion="card"]:hover::before {
     counters.forEach((el) => io.observe(el));
   }
 
-  // ── Magnetic buttons ──────────────────────────────────────────
-  function initMagnetic() {
-    const btns = document.querySelectorAll<HTMLElement>('.btn--primary, .btn--top');
-
-    btns.forEach((btn) => {
-      btn.addEventListener('mousemove', (e: MouseEvent) => {
-        const rect = btn.getBoundingClientRect();
-        const x = (e.clientX - rect.left - rect.width  / 2) * 0.22;
-        const y = (e.clientY - rect.top  - rect.height / 2) * 0.22;
-        btn.style.transform = `translate(${x}px, ${y}px) translateY(-1px)`;
-      });
-
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transform = '';
-      });
-    });
-  }
-
   document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initNavbar();
-    initTilt();
     initCounters();
-    initMagnetic();
   });
 </script>

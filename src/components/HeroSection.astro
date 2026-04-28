@@ -24,10 +24,10 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
       <nav class="hero__nav" aria-label="Navegación principal">
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#beneficios" class="is-active">Beneficios</a>
-        <a href="#acceso">Acceso anticipado</a>
+        <a href="#probarlo">Acceso anticipado</a>
       </nav>
 
-      <a href="#acceso" class="btn btn--top">Reservar acceso</a>
+      <a href="#probarlo" class="btn btn--top">Reservar acceso</a>
 
       <button class="hero__menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
         <Image src={menuIcon} alt="" aria-hidden="true" class="hero__menu-icon" loading="eager" />
@@ -38,9 +38,9 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
       <nav class="hero__mobile-nav" aria-label="Navegación principal móvil">
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#beneficios">Beneficios</a>
-        <a href="#acceso">Acceso anticipado</a>
+        <a href="#probarlo">Acceso anticipado</a>
       </nav>
-      <a href="#acceso" class="btn btn--mobile-cta">Reservar acceso</a>
+      <a href="#probarlo" class="btn btn--mobile-cta">Reservar acceso</a>
     </div>
   </header>
 
@@ -60,7 +60,7 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
       </p>
 
       <div class="hero__actions">
-        <a href="#acceso" class="btn btn--primary">
+        <a href="#probarlo" class="btn btn--primary">
           Crear mi plan ahora
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -115,6 +115,11 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
       link.addEventListener('click', closeMenu);
     });
   }
+
+  document.querySelector('.brand')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
   updateStickyNavbar();
   window.addEventListener('scroll', updateStickyNavbar, { passive: true });
@@ -307,7 +312,7 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
     justify-content: center;
     border-radius: 14px;
     font: 700 1rem/1.2 Manrope, "Segoe UI", sans-serif;
-    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
 
   .btn:focus-visible,
@@ -329,7 +334,6 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
 
   .btn--top:hover {
     background: var(--hero-primary-hover);
-    transform: translateY(-1px);
   }
 
   .hero__content-wrap {
@@ -394,7 +398,6 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
   }
 
   .btn--primary:hover {
-    transform: translateY(-1px);
     background: linear-gradient(180deg, #c86cca 0%, #a949ab 100%);
     box-shadow: 0 16px 40px rgba(180, 84, 181, 0.5);
   }
@@ -413,7 +416,6 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
   .btn--secondary:hover {
     background: rgba(20, 23, 68, 0.62);
     border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-1px);
   }
 
   .hero__proof {
