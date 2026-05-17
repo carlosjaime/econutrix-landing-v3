@@ -33,7 +33,7 @@ import logoEcoNutrix from '../../assets/images/logo_econutrix.png';
         <ul class="mt-4 space-y-2.5 text-[0.88rem] text-white/56 sm:space-y-3 sm:text-[0.96rem]">
           <li><a href="#" data-open-legal="terms" class="transition-colors hover:text-white">Términos de uso</a></li>
           <li><a href="#" data-open-legal="privacy" class="transition-colors hover:text-white">Privacidad</a></li>
-          <li><a href="#" class="transition-colors hover:text-white">Cookies</a></li>
+          <li><a href="#" id="footer-cookies-open" class="transition-colors hover:text-white">Cookies</a></li>
         </ul>
       </div>
 
@@ -52,3 +52,14 @@ import logoEcoNutrix from '../../assets/images/logo_econutrix.png';
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  document.getElementById('footer-cookies-open')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    const modal = document.getElementById('cookie-modal');
+    if (modal) {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+  });
+</script>
