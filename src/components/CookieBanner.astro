@@ -5,7 +5,7 @@
 <!-- Banner -->
 <div
   id=”cookie-banner”
-  class=”fixed inset-x-0 bottom-0 z-[9998] hidden px-3 pb-3 pt-0 sm:bottom-6 sm:px-6 sm:pb-0”
+  class=”fixed inset-x-0 bottom-0 z-[9998] px-3 pb-3 pt-0 sm:bottom-6 sm:px-6 sm:pb-0”
   role=”dialog”
   aria-live=”polite”
   aria-label=”Aviso de cookies”
@@ -210,7 +210,6 @@
           JSON.stringify({ ...consent, ts: Date.now() })
         );
       } catch (_) {}
-      banner.classList.add('hidden');
       banner.style.display = 'none';
       closeModal();
     }
@@ -242,17 +241,7 @@
     }
 
     function showBanner() {
-      banner.classList.remove('hidden');
-      banner.style.display = 'block';
-    }
-
-    if (!readStored()) {
-      // Espera a que el DOM esté listo antes de mostrar
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', showBanner);
-      } else {
-        showBanner();
-      }
+      banner.style.display = '';
     }
 
     document.getElementById('cookie-accept')?.addEventListener('click', () => {
