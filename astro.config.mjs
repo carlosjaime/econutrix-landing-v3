@@ -8,6 +8,7 @@ export default defineConfig({
   output: 'server',
   adapter: node({ mode: 'standalone' }),
   compressHTML: false,
+  devToolbar: { enabled: false },
   vite: {
     plugins: [tailwindcss()],
   },

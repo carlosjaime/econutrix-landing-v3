@@ -1,188 +1,358 @@
 ---
-// Legal modal — tabs: Términos de uso / Política de privacidad
+// Legal modal — tabs: Términos de uso / Privacidad
 ---
+
+<style>
+  /* Panel transition */
+  .legal-panel {
+    animation: none;
+  }
+  .legal-panel.is-entering {
+    animation: panelFadeSlide 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes panelFadeSlide {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Tab underline pill animation */
+  .legal-tab-indicator {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 2px;
+    background: #694BD6;
+    border-radius: 9999px;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+</style>
 
 <div
   id="legal-modal"
-  class="fixed inset-0 z-[120] hidden items-center justify-center p-4 sm:p-6"
+  class="fixed inset-0 z-[10000] hidden items-end justify-center sm:items-center sm:p-4"
   role="dialog"
   aria-modal="true"
   aria-labelledby="legal-modal-title"
 >
-  <div id="legal-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <!-- Backdrop -->
+  <div id="legal-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
 
+  <!-- Panel wrapper -->
   <div class="relative w-full max-w-3xl">
-    <!-- Close button -->
-    <button
-      type="button"
-      id="legal-modal-close"
-      aria-label="Cerrar"
-      class="absolute -top-3 right-2 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-fuchsia-500 text-white shadow-lg ring-2 ring-[#0a0a1a] transition hover:bg-fuchsia-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300 sm:h-10 sm:w-10"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
 
-    <div class="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5">
+    <!-- Contenido con overflow-hidden -->
+    <div class="flex max-h-[92vh] flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl ring-1 ring-black/5 sm:max-h-[88vh] sm:rounded-2xl">
+
       <h2 id="legal-modal-title" class="sr-only">Información legal</h2>
 
-      <!-- Tabs -->
-      <div role="tablist" aria-label="Información legal" class="flex border-b border-gray-200 bg-white">
-        <button
-          type="button"
-          role="tab"
-          id="legal-tab-terms"
-          aria-controls="legal-panel-terms"
-          aria-selected="true"
-          data-legal-tab="terms"
-          class="flex-1 px-3 py-3 text-sm font-semibold leading-tight transition-colors data-[active=true]:border-b-2 data-[active=true]:border-fuchsia-500 data-[active=true]:text-fuchsia-600 sm:px-6 sm:py-4 sm:text-base"
-          data-active="true"
-        >
-          Términos de uso
-        </button>
-        <button
-          type="button"
-          role="tab"
-          id="legal-tab-privacy"
-          aria-controls="legal-panel-privacy"
-          aria-selected="false"
-          data-legal-tab="privacy"
-          class="flex-1 border-l border-gray-200 px-3 py-3 text-sm font-semibold leading-tight text-gray-700 transition-colors hover:text-gray-900 data-[active=true]:border-b-2 data-[active=true]:border-fuchsia-500 data-[active=true]:text-fuchsia-600 sm:px-6 sm:py-4 sm:text-base"
-          data-active="false"
-        >
-          Política de privacidad
-        </button>
+      <!-- Drag handle (mobile only) -->
+      <div class="flex justify-center pt-3 pb-1 sm:hidden">
+        <div class="h-1 w-10 rounded-full bg-gray-300"></div>
       </div>
 
-      <!-- Panels -->
-      <div class="max-h-[70vh] overflow-y-auto bg-white px-5 py-5 text-gray-800 sm:max-h-[75vh] sm:px-8 sm:py-7">
-        <!-- Terms -->
-        <section
-          id="legal-panel-terms"
-          role="tabpanel"
-          aria-labelledby="legal-tab-terms"
-          data-legal-panel="terms"
-          class="space-y-5 text-[0.95rem] leading-relaxed sm:text-base"
-        >
-          <div>
-            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">1. ACEPTACIÓN DE LOS TÉRMINOS</h3>
-            <p class="mt-2">
-              El acceso, descarga o uso de la aplicación EcoNutrix (en adelante, “la App” o “el Servicio”) implica la aceptación plena y sin reservas de los presentes Términos y Condiciones de Uso.
-            </p>
-            <p class="mt-2">
-              Si no estás de acuerdo con alguno de los puntos aquí expuestos, te solicitamos no utilizar la App ni sus servicios asociados. EcoNutrix se reserva el derecho de modificar, actualizar o ampliar estos términos en cualquier momento, notificándolo mediante los canales oficiales o dentro de la propia App. Las modificaciones entrarán en vigencia desde su publicación.
-            </p>
-          </div>
+      <!-- Tabs + X dentro del contenedor -->
+      <div class="relative flex items-stretch border-b border-gray-200 bg-white">
+        <div role="tablist" aria-label="Información legal" class="relative flex flex-1">
 
-          <div>
-            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">2. DESCRIPCIÓN DEL SERVICIO</h3>
-            <p class="mt-2">
-              EcoNutrix es una plataforma digital que utiliza inteligencia artificial y algoritmos nutricionales para:
-            </p>
-            <ul class="mt-2 list-disc space-y-1 pl-6">
-              <li>Sugerir recetas y planes de comidas personalizados.</li>
-              <li>Generar listas de compras inteligentes según tus preferencias.</li>
-              <li>Ofrecer recomendaciones nutricionales orientativas.</li>
-            </ul>
-            <p class="mt-2">
-              El Servicio tiene fines informativos y de apoyo, y no sustituye la consulta con profesionales de la salud o nutrición.
-            </p>
-          </div>
+          <!-- Sliding indicator -->
+          <div id="legal-tab-indicator" class="legal-tab-indicator" style="width:50%;transform:translateX(0%)"></div>
 
-          <div>
-            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">3. USO PERMITIDO</h3>
-            <p class="mt-2">
-              Te comprometes a utilizar EcoNutrix de forma lícita, respetando estos términos, la legislación vigente y los derechos de terceros. Queda prohibido el uso de la App para fines fraudulentos, ofensivos o que afecten su correcto funcionamiento.
-            </p>
-          </div>
+          <button
+            type="button"
+            role="tab"
+            id="legal-tab-terms"
+            aria-controls="legal-panel-terms"
+            aria-selected="true"
+            data-legal-tab="terms"
+            data-active="true"
+            class="legal-tab-btn relative flex-1 py-4 text-sm font-semibold transition-colors duration-200 data-[active=true]:text-[#694BD6] sm:text-base"
+          >
+            Términos de uso
+          </button>
 
-          <div>
-            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">4. PROPIEDAD INTELECTUAL</h3>
-            <p class="mt-2">
-              Todos los contenidos, marcas, logotipos y desarrollos asociados a EcoNutrix son propiedad de EcoNutrix SpA o de sus licenciantes y están protegidos por la normativa de propiedad intelectual.
-            </p>
-          </div>
-        </section>
+          <div class="w-px self-stretch bg-gray-200"></div>
 
-        <!-- Privacy -->
-        <section
-          id="legal-panel-privacy"
-          role="tabpanel"
-          aria-labelledby="legal-tab-privacy"
-          data-legal-panel="privacy"
-          class="hidden space-y-5 text-[0.95rem] leading-relaxed sm:text-base"
-        >
-          <p>
-            En EcoNutrix, la privacidad de nuestros usuarios es una prioridad esencial. Esta Política de Privacidad explica cómo recopilamos, utilizamos, almacenamos y protegemos tu información personal al usar nuestra aplicación web, móvil o cualquier servicio asociado al dominio <strong>econutrix.com.</strong>
-          </p>
-          <p>
-            Al registrarte, acceder o utilizar EcoNutrix, aceptas esta Política de Privacidad y nos autorizas a tratar tus datos conforme a lo aquí descrito.
-          </p>
+          <button
+            type="button"
+            role="tab"
+            id="legal-tab-privacy"
+            aria-controls="legal-panel-privacy"
+            aria-selected="false"
+            data-legal-tab="privacy"
+            data-active="false"
+            class="legal-tab-btn relative flex-1 py-4 text-sm font-semibold text-gray-500 transition-colors duration-200 hover:text-gray-800 data-[active=true]:text-[#694BD6] sm:text-base"
+          >
+            Privacidad
+          </button>
+        </div>
 
-          <div>
-            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">1. IDENTIDAD DEL RESPONSABLE DEL TRATAMIENTO</h3>
-            <ul class="mt-2 space-y-1">
-              <li><strong>Titular:</strong> EcoNutrix SpA</li>
-              <li><strong>Domicilio:</strong> Santiago de Chile (Chile)</li>
-              <li>
-                <strong>Correo de contacto:</strong>
-                <a href="mailto:privacidad@econutrix.com" class="text-fuchsia-600 underline underline-offset-2 hover:text-fuchsia-500">privacidad@econutrix.com</a>
-              </li>
-              <li><strong>Representante legal:</strong> Gerente General de EcoNutrix SpA</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">2. DATOS QUE RECOPILAMOS</h3>
-            <p class="mt-2">Para ofrecer una experiencia personalizada, podemos recopilar:</p>
-            <ul class="mt-2 list-disc space-y-1 pl-6">
-              <li>Datos de registro: nombre, correo electrónico, contraseña.</li>
-              <li>Datos nutricionales y de preferencias alimentarias.</li>
-              <li>Datos de uso de la plataforma y dispositivo.</li>
-              <li>Cookies y tecnologías similares (ver Política de Cookies).</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">3. FINALIDAD DEL TRATAMIENTO</h3>
-            <p class="mt-2">
-              Tus datos se utilizan para prestar el servicio, personalizar recomendaciones, mejorar la plataforma y cumplir con obligaciones legales aplicables.
-            </p>
-          </div>
-
-          <div>
-            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">4. DERECHOS DEL USUARIO</h3>
-            <p class="mt-2">
-              Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, cancelación y oposición escribiendo a
-              <a href="mailto:privacidad@econutrix.com" class="text-fuchsia-600 underline underline-offset-2 hover:text-fuchsia-500">privacidad@econutrix.com</a>.
-            </p>
-          </div>
-        </section>
+        <!-- Botón X: círculo centrado, siempre dentro del contenedor -->
+        <div class="flex shrink-0 items-center px-3">
+          <button
+            type="button"
+            id="legal-modal-close"
+            aria-label="Cerrar"
+            class="inline-flex h-8 w-8 items-center justify-center rounded-full text-white transition hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#694BD6]"
+            style="background-color: #694BD6;"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
       </div>
+
+    <!-- Content -->
+    <div class="flex-1 overflow-y-auto overscroll-contain px-4 py-4 text-gray-800 sm:px-8 sm:py-6">
+
+      <!-- Terms panel -->
+      <section
+        id="legal-panel-terms"
+        role="tabpanel"
+        aria-labelledby="legal-tab-terms"
+        data-legal-panel="terms"
+        class="legal-panel space-y-5 text-[0.9rem] leading-relaxed sm:text-[0.95rem]"
+      >
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">1. ACEPTACIÓN DE LOS TÉRMINOS</h3>
+          <p class="mt-2">El acceso, descarga o uso de la aplicación EcoNutrix (en adelante, "la App" o "el Servicio") implica la aceptación plena y sin reservas de los presentes Términos y Condiciones de Uso. Si no estás de acuerdo con alguno de los puntos aquí expuestos, te solicitamos no utilizar la App ni sus servicios asociados.</p>
+          <p class="mt-2">EcoNutrix se reserva el derecho de modificar, actualizar o ampliar estos términos en cualquier momento, notificándolo mediante los canales oficiales o dentro de la propia App. Las modificaciones entrarán en vigencia desde su publicación.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">2. DESCRIPCIÓN DEL SERVICIO</h3>
+          <p class="mt-2">EcoNutrix es una plataforma digital que utiliza inteligencia artificial y algoritmos nutricionales para:</p>
+          <ul class="mt-2 list-disc space-y-1 pl-5">
+            <li>Sugerir recetas y planes de comidas personalizados.</li>
+            <li>Optimizar el uso de ingredientes disponibles.</li>
+            <li>Reducir desperdicio de alimentos y consumo innecesario.</li>
+            <li>Promover hábitos saludables y sostenibles.</li>
+          </ul>
+          <p class="mt-2">EcoNutrix no ofrece asesoramiento médico ni reemplaza la orientación profesional de nutricionistas, médicos u otros especialistas. La información entregada tiene fines educativos e informativos.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">3. USO DEL SERVICIO</h3>
+          <p class="mt-2 font-semibold">3.1 Condiciones de uso</p>
+          <p class="mt-1">El usuario se compromete a utilizar la App de forma responsable, legal y ética. Queda prohibido:</p>
+          <ul class="mt-2 list-disc space-y-1 pl-5">
+            <li>Utilizar la App con fines ilícitos o contrarios a las buenas costumbres.</li>
+            <li>Alterar, modificar o intervenir en el funcionamiento técnico del sistema.</li>
+            <li>Acceder o intentar acceder a información privada de otros usuarios.</li>
+            <li>Reproducir, distribuir o comercializar contenido o software sin autorización de EcoNutrix SpA.</li>
+          </ul>
+          <p class="mt-2 font-semibold">3.2 Edad mínima</p>
+          <p class="mt-1">EcoNutrix está destinada a usuarios mayores de 16 años. En caso de usuarios menores, se requiere consentimiento expreso de padres o tutores.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">4. REGISTRO Y CUENTA DE USUARIO</h3>
+          <p class="mt-2">Al registrarte en EcoNutrix, deberás proporcionar datos veraces, actualizados y completos. Eres responsable de mantener la confidencialidad de tus credenciales y del uso de tu cuenta. EcoNutrix podrá suspender o eliminar cuentas que incumplan los presentes términos o realicen usos indebidos del servicio.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">5. PROTECCIÓN DE DATOS Y PRIVACIDAD</h3>
+          <p class="mt-2">EcoNutrix cumple con la Ley N° 19.628 sobre Protección de la Vida Privada (Chile) y el Reglamento General de Protección de Datos (RGPD – Unión Europea), asegurando un tratamiento ético y transparente de la información personal.</p>
+          <p class="mt-2 font-semibold">5.1 Datos recolectados</p>
+          <ul class="mt-1 list-disc space-y-1 pl-5">
+            <li>Información de registro (nombre, correo electrónico, país, idioma).</li>
+            <li>Preferencias alimentarias, objetivos nutricionales o éticos (opcional).</li>
+            <li>Información de uso (interacción con la app, recetas guardadas, hábitos, ingredientes disponibles).</li>
+          </ul>
+          <p class="mt-2 font-semibold">5.2 Finalidad del tratamiento</p>
+          <ul class="mt-1 list-disc space-y-1 pl-5">
+            <li>Personalizar la experiencia dentro de la app.</li>
+            <li>Mejorar las recomendaciones de IA.</li>
+            <li>Enviar notificaciones relevantes o recordatorios de uso.</li>
+            <li>Analizar métricas internas para mejorar el servicio.</li>
+          </ul>
+          <p class="mt-2 font-semibold">5.3 Derechos del usuario</p>
+          <p class="mt-1">En cualquier momento puedes acceder, rectificar o eliminar tus datos, solicitar su portabilidad o retirar el consentimiento. Contáctanos en: <a href="mailto:privacidad@econutrix.com" class="text-[#694BD6] underline underline-offset-2 hover:opacity-80">privacidad@econutrix.com</a></p>
+          <p class="mt-2 font-semibold">5.4 Conservación y eliminación</p>
+          <p class="mt-1">Tus datos se conservarán mientras mantengas una cuenta activa o sea necesario para las finalidades descritas. Puedes solicitar la eliminación total en cualquier momento.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">6. COOKIES Y TECNOLOGÍAS DE SEGUIMIENTO</h3>
+          <p class="mt-2">EcoNutrix utiliza cookies y tecnologías similares con fines de funcionamiento, seguridad, estadísticas y personalización de contenido. Puedes gestionar o desactivar las cookies desde tu navegador. El uso continuo del sitio o la app implica la aceptación de nuestra Política de Cookies.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">7. PROPIEDAD INTELECTUAL</h3>
+          <p class="mt-2">Todo el contenido disponible en EcoNutrix, incluyendo logotipos, textos, gráficos, algoritmos, bases de datos y diseño, es propiedad exclusiva de EcoNutrix SpA o de sus legítimos titulares, y está protegido por las leyes de propiedad intelectual vigentes. Queda prohibida su reproducción total o parcial sin autorización expresa y por escrito del titular.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">8. LIMITACIÓN DE RESPONSABILIDAD</h3>
+          <p class="mt-2">EcoNutrix no garantiza resultados específicos en materia de salud, nutrición o sostenibilidad. El uso del servicio es voluntario y bajo responsabilidad del usuario. EcoNutrix no se hace responsable de daños derivados del uso indebido, errores de interpretación o decisiones personales basadas únicamente en las recomendaciones de la app.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">9. ACTUALIZACIONES Y MANTENIMIENTO</h3>
+          <p class="mt-2">EcoNutrix podrá realizar mejoras, actualizaciones y cambios de servicio sin previo aviso, con el fin de optimizar la experiencia del usuario. En caso de interrupciones temporales por mantenimiento, se procurará comunicar con antelación dentro de la aplicación o en el sitio web oficial.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">10. USO DE INTELIGENCIA ARTIFICIAL RESPONSABLE</h3>
+          <p class="mt-2">EcoNutrix utiliza modelos de IA y aprendizaje automático entrenados con principios de sostenibilidad, bajo estrictas normas de seguridad y privacidad. El sistema no almacena información sensible fuera del entorno seguro de datos, ni utiliza tu información personal para entrenar modelos externos. La IA de EcoNutrix busca apoyar decisiones humanas, no reemplazarlas.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">11. RESOLUCIÓN DE CONFLICTOS</h3>
+          <p class="mt-2">Cualquier conflicto o controversia relacionada con estos Términos se regirá por las leyes de la República de Chile, y será resuelto por los tribunales ordinarios de la ciudad de Santiago.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">12. CONTACTO</h3>
+          <p class="mt-2">Para consultas, soporte o ejercer tus derechos de privacidad, puedes comunicarte con nosotros a través de: <a href="mailto:contacto@econutrix.com" class="text-[#694BD6] underline underline-offset-2 hover:opacity-80">contacto@econutrix.com</a> — <a href="https://www.econutrix.com" target="_blank" rel="noopener" class="text-[#694BD6] underline underline-offset-2 hover:opacity-80">www.econutrix.com</a></p>
+          <p class="mt-2">Nos comprometemos a responder de manera transparente, ética y en un plazo razonable.</p>
+        </div>
+        <div class="rounded-lg border border-[#694BD6]/20 bg-[#694BD6]/5 p-4">
+          <p class="font-semibold text-[#694BD6]">COMPROMISO ECONUTRIX</p>
+          <p class="mt-1 text-gray-700">EcoNutrix no es solo una herramienta tecnológica: es un compromiso con una vida más consciente, sostenible y equilibrada. Cada usuario es parte de un cambio que comienza en lo cotidiano: cuidar de uno mismo y del planeta, al mismo tiempo.</p>
+        </div>
+      </section>
+
+      <!-- Privacy panel -->
+      <section
+        id="legal-panel-privacy"
+        role="tabpanel"
+        aria-labelledby="legal-tab-privacy"
+        data-legal-panel="privacy"
+        class="legal-panel hidden space-y-5 text-[0.9rem] leading-relaxed sm:text-[0.95rem]"
+      >
+        <p>En EcoNutrix, la privacidad de nuestros usuarios es una prioridad esencial. Esta Política de Privacidad explica cómo recopilamos, utilizamos, almacenamos y protegemos tu información personal al usar nuestra aplicación web, móvil o cualquier servicio asociado al dominio <strong>econutrix.com.</strong></p>
+        <p>Al registrarte, acceder o utilizar EcoNutrix, aceptas esta Política de Privacidad y nos autorizas a tratar tus datos conforme a lo aquí descrito.</p>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">1. Identidad del responsable del tratamiento</h3>
+          <ul class="mt-2 space-y-1">
+            <li><strong>Titular:</strong> EcoNutrix SpA</li>
+            <li><strong>Domicilio:</strong> Santiago de Chile (Chile)</li>
+            <li><strong>Correo de contacto:</strong> <a href="mailto:privacidad@econutrix.com" class="text-[#694BD6] underline underline-offset-2 hover:opacity-80">privacidad@econutrix.com</a></li>
+            <li><strong>Representante legal:</strong> Gerente General de EcoNutrix SpA</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">2. Datos personales que recopilamos</h3>
+          <p class="mt-2">Podemos recopilar las siguientes categorías de datos:</p>
+          <ul class="mt-2 list-disc space-y-1 pl-5">
+            <li><strong>Datos de identificación:</strong> nombre, correo electrónico, país o región, idioma preferido.</li>
+            <li><strong>Datos de perfil nutricional:</strong> edad, género (opcional), objetivos de salud, hábitos alimenticios, historial médico (solo si el usuario decide proporcionarlo).</li>
+            <li><strong>Datos de uso y comportamiento:</strong> recetas consultadas, interacciones dentro de la app, tiempo de sesión y preferencias.</li>
+            <li><strong>Datos técnicos:</strong> tipo de dispositivo, sistema operativo, dirección IP, identificadores de cookies o analítica anónima.</li>
+            <li><strong>Datos de terceros:</strong> si el usuario se registra mediante redes sociales (Google, Apple, etc.), recibimos solo los datos básicos de autenticación autorizados por el usuario.</li>
+          </ul>
+          <p class="mt-2">No tratamos datos sensibles sin consentimiento explícito.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">3. Finalidad del tratamiento</h3>
+          <p class="mt-2">Los datos personales se utilizan exclusivamente para:</p>
+          <ul class="mt-2 list-disc space-y-1 pl-5">
+            <li>Ofrecer y personalizar los servicios de EcoNutrix, incluyendo recomendaciones de recetas, planificación de comidas y hábitos saludables.</li>
+            <li>Mejorar la experiencia de usuario mediante analítica de uso y aprendizaje automático local (nunca comercializamos información individual).</li>
+            <li>Gestionar cuentas, soporte técnico y comunicación directa.</li>
+            <li>Cumplir obligaciones legales o contractuales.</li>
+            <li>Promocionar contenido relevante, siempre con consentimiento expreso para comunicaciones comerciales.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">4. Base legal para el tratamiento</h3>
+          <ul class="mt-2 list-disc space-y-1 pl-5">
+            <li>Consentimiento explícito del usuario al registrarse o entregar información.</li>
+            <li>Ejecución de un contrato, al brindar los servicios solicitados dentro de la app.</li>
+            <li>Interés legítimo para mejorar la seguridad, funcionalidad y experiencia general de EcoNutrix.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">5. Conservación de los datos</h3>
+          <p class="mt-2">Los datos personales se conservarán solo el tiempo necesario para cumplir la finalidad con la que fueron recopilados o mientras el usuario mantenga su cuenta activa. Al eliminar la cuenta, la información será borrada o anonimizada de forma segura dentro de un plazo máximo de 30 días.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">6. Comunicación y transferencia de datos</h3>
+          <p class="mt-2">EcoNutrix no vende, alquila ni cede datos personales a terceros. Solo compartimos información cuando:</p>
+          <ul class="mt-2 list-disc space-y-1 pl-5">
+            <li>Es estrictamente necesario para prestar un servicio (por ejemplo, proveedores de hosting o análisis anónimo de rendimiento).</li>
+            <li>Lo exige una autoridad competente conforme a la ley.</li>
+          </ul>
+          <p class="mt-2">En caso de transferencias internacionales, garantizamos que se cumplan cláusulas contractuales tipo o mecanismos equivalentes de protección de datos.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">7. Derechos de los usuarios (Derechos ARCO)</h3>
+          <p class="mt-2">Los usuarios tienen derecho a:</p>
+          <ul class="mt-2 list-disc space-y-1 pl-5">
+            <li>Acceder a sus datos personales.</li>
+            <li>Rectificar información inexacta o incompleta.</li>
+            <li>Cancelar sus datos cuando ya no sean necesarios.</li>
+            <li>Oponerse al tratamiento en determinados casos.</li>
+            <li>Solicitar la portabilidad de datos y la revocación del consentimiento en cualquier momento.</li>
+          </ul>
+          <p class="mt-2">Para ejercer estos derechos, escribe a: <a href="mailto:privacidad@econutrix.com" class="text-[#694BD6] underline underline-offset-2 hover:opacity-80">privacidad@econutrix.com</a> acreditando tu identidad mediante el correo registrado o documento válido.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">8. Seguridad de la información</h3>
+          <p class="mt-2">EcoNutrix aplica medidas técnicas, organizativas y de cifrado para proteger la información frente a accesos no autorizados, pérdida o alteración. Entre ellas:</p>
+          <ul class="mt-2 list-disc space-y-1 pl-5">
+            <li>Cifrado SSL/TLS en todas las conexiones.</li>
+            <li>Almacenamiento seguro en entornos cloud con acceso controlado.</li>
+            <li>Registro y auditoría interna de incidentes de seguridad.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">9. Cookies y tecnologías similares</h3>
+          <p class="mt-2">EcoNutrix utiliza cookies funcionales y analíticas para mejorar el rendimiento del sitio. El usuario puede configurar, aceptar o rechazar su uso a través del banner de cookies o del navegador. Para más información, consulta nuestra Política de Cookies.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">10. Modificaciones de esta política</h3>
+          <p class="mt-2">EcoNutrix podrá actualizar esta Política de Privacidad para reflejar cambios en la legislación o mejoras de servicio. La fecha de la última actualización se indicará en la parte superior del documento.</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">11. Contacto y reclamaciones</h3>
+          <p class="mt-2">Si consideras que tus derechos no han sido respetados, puedes contactarnos directamente en: <a href="mailto:privacidad@econutrix.com" class="text-[#694BD6] underline underline-offset-2 hover:opacity-80">privacidad@econutrix.com</a></p>
+          <p class="mt-2">También puedes recurrir ante la Agencia de Protección de Datos Personales de Chile o la autoridad de control competente en tu país.</p>
+        </div>
+        <div class="rounded-lg border border-[#694BD6]/20 bg-[#694BD6]/5 p-4">
+          <p class="font-semibold text-[#694BD6]">EcoNutrix SpA</p>
+          <p class="mt-1 italic text-gray-700">"Creemos en una tecnología al servicio de las personas, donde la privacidad es una forma de respeto y sostenibilidad".</p>
+        </div>
+      </section>
     </div>
-  </div>
+    </div><!-- /overflow-hidden -->
+  </div><!-- /panel wrapper -->
 </div>
 
 <script is:inline>
   (function () {
-    const modal = document.getElementById('legal-modal');
+    const modal     = document.getElementById('legal-modal');
+    const indicator = document.getElementById('legal-tab-indicator');
     if (!modal) return;
 
-    const tabs = modal.querySelectorAll('[data-legal-tab]');
+    const tabs   = modal.querySelectorAll('[data-legal-tab]');
     const panels = modal.querySelectorAll('[data-legal-panel]');
 
+    // Map tab keys to indicator position
+    const tabOrder = ['terms', 'privacy'];
+
     function activate(tabKey) {
+      const idx = tabOrder.indexOf(tabKey);
+
+      // Move sliding indicator
+      if (indicator) {
+        indicator.style.transform = `translateX(${idx * 100}%)`;
+      }
+
       tabs.forEach((t) => {
         const active = t.getAttribute('data-legal-tab') === tabKey;
         t.setAttribute('data-active', String(active));
         t.setAttribute('aria-selected', String(active));
       });
+
       panels.forEach((p) => {
         const active = p.getAttribute('data-legal-panel') === tabKey;
-        p.classList.toggle('hidden', !active);
+        if (active) {
+          p.classList.remove('hidden');
+          // Trigger enter animation
+          p.classList.remove('is-entering');
+          void p.offsetWidth; // reflow
+          p.classList.add('is-entering');
+        } else {
+          p.classList.add('hidden');
+          p.classList.remove('is-entering');
+        }
       });
+
+      // Scroll content to top on tab change
+      modal.querySelector('.overflow-y-auto')?.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function open(tabKey) {
@@ -198,18 +368,12 @@
       document.body.style.overflow = '';
     }
 
-    tabs.forEach((t) => {
-      t.addEventListener('click', () => activate(t.getAttribute('data-legal-tab')));
-    });
-
+    tabs.forEach((t) => t.addEventListener('click', () => activate(t.getAttribute('data-legal-tab'))));
     document.getElementById('legal-modal-close')?.addEventListener('click', close);
     document.getElementById('legal-modal-backdrop')?.addEventListener('click', close);
-
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && !modal.classList.contains('hidden')) close();
     });
-
-    // Open via [data-open-legal="terms|privacy"] attributes anywhere on the page
     document.addEventListener('click', (e) => {
       const target = e.target instanceof Element ? e.target.closest('[data-open-legal]') : null;
       if (!target) return;
@@ -217,7 +381,6 @@
       open(target.getAttribute('data-open-legal') || 'terms');
     });
 
-    // Expose programmatic API
     window.EcoNutrixLegalModal = { open, close };
   })();
 </script>

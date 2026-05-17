@@ -27,7 +27,7 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
         <a href="#probarlo">Acceso anticipado</a>
       </nav>
 
-      <a href="#probarlo" class="btn btn--top">Reservar acceso</a>
+      <a href="#probarlo" class="btn btn--top">Crear plan ahora</a>
 
       <button class="hero__menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú">
         <Image src={menuIcon} alt="" aria-hidden="true" class="hero__menu-icon" loading="eager" />
@@ -40,7 +40,7 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
         <a href="#beneficios">Beneficios</a>
         <a href="#probarlo">Acceso anticipado</a>
       </nav>
-      <a href="#probarlo" class="btn btn--mobile-cta">Reservar acceso</a>
+      <a href="#probarlo" class="btn btn--mobile-cta">Crear plan ahora</a>
     </div>
   </header>
 
@@ -453,12 +453,9 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
     }
 
     .hero__curve {
-      display: none !important;
-      width: 0 !important;
-      height: 0 !important;
-      opacity: 0 !important;
-      visibility: hidden !important;
-      pointer-events: none !important;
+      left: -420px;
+      width: 920px;
+      height: 800px;
     }
 
     .hero__glow {

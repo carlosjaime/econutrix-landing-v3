@@ -17,7 +17,7 @@
           autocomplete="email"
           inputmode="email"
           required
-          class="h-14 w-full rounded-2xl border border-[#cfd4df] bg-white pl-5 pr-12 text-[#1f2533] placeholder:text-[#9aa1af] outline-none focus:border-[#a74ca8] focus:ring-2 focus:ring-[#a74ca8]/40"
+          class="h-14 w-full rounded-2xl border border-[#cfd4df] bg-white pl-5 pr-12 font-bold text-[#1f2533] placeholder:font-bold placeholder:text-[#9aa1af] outline-none focus:border-[#a74ca8] focus:ring-2 focus:ring-[#a74ca8]/40"
         />
         <span id="trial-email-status" class="email-status-indicator" data-state="idle" aria-hidden="true">
           <span class="email-status-icon icon-loading">
@@ -38,7 +38,7 @@
     </form>
     <p id="trial-email-feedback" class="email-feedback" aria-live="polite" role="status"></p>
 
-    <p data-motion="text" style="--motion-delay: 180ms;" class="mt-6 text-[1.04rem] font-semibold italic text-[#72798a]">Sin spam. Solo novedades importantes.</p>
+    <p data-motion="text" style="--motion-delay: 180ms;" class="mt-6 text-[1.04rem] font-bold text-[#72798a]">Sin spam. Solo novedades importantes.</p>
   </div>
 </section>
 
@@ -65,6 +65,7 @@
   const modalCloseButton = document.querySelector('#waitlist-modal-close');
   const modalCloseTriggers = document.querySelectorAll('[data-close-modal]');
   let successFeedbackTimeout = null;
+  let errorFeedbackTimeout = null;
 
   const WAITLIST_PROXY_URL = '/api/waitlist';
   const WAITLIST_FALLBACK_URL = 'https://api.econutrix.dvlsft.dev/v1/waitlist';
@@ -152,6 +153,11 @@
     if (validationError) {
       setStatus('error');
       setFeedback(validationError, 'error');
+      if (errorFeedbackTimeout) clearTimeout(errorFeedbackTimeout);
+      errorFeedbackTimeout = setTimeout(() => {
+        setFeedback('', null);
+        setStatus('idle');
+      }, 4000);
       return;
     }
 
