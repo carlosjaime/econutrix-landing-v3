@@ -10,7 +10,7 @@
   aria-label="Aviso de cookies"
   style="display:none; position:fixed; left:0; right:0; bottom:0; z-index:9998; padding:0 12px 12px;"
 >
-  <div style="
+  <div id="cookie-banner-inner" style="
     position:relative;
     max-width:1480px;
     margin:0 auto;
@@ -20,20 +20,6 @@
     box-shadow:0 -4px 40px rgba(0,0,0,0.6);
     padding:14px 52px 14px 20px;
   ">
-
-    <!-- X cerrar — siempre visible en esquina superior derecha -->
-    <button
-      type="button"
-      id="cookie-close"
-      aria-label="Cerrar aviso de cookies"
-      style="position:absolute;top:10px;right:10px;width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer;color:rgba(255,255,255,0.75);border-radius:6px;"
-      onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='#fff'"
-      onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.75)'"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-      </svg>
-    </button>
 
     <!-- Layout: texto + botones -->
     <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
@@ -50,7 +36,7 @@
         </button>
       </div>
 
-      <!-- Botones acción -->
+      <!-- Botones acción + X -->
       <div id="cookie-btns" style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
         <button
           type="button"
@@ -70,10 +56,43 @@
         >
           <strong>Aceptar todo</strong>
         </button>
+        <!-- X: absoluta en mobile, inline centrada en desktop -->
+        <button
+          type="button"
+          id="cookie-close"
+          aria-label="Cerrar aviso de cookies"
+          style="width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer;color:rgba(255,255,255,0.75);border-radius:6px;flex-shrink:0;"
+          onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='#fff'"
+          onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.75)'"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
       </div>
 
     </div>
   </div>
+
+  <style>
+    /* Mobile: X absoluta en esquina superior derecha */
+    #cookie-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    /* Desktop: X inline dentro del flex row, centrada verticalmente */
+    @media (min-width: 768px) {
+      #cookie-banner-inner {
+        padding-right: 20px;
+      }
+      #cookie-close {
+        position: static;
+        top: auto;
+        right: auto;
+      }
+    }
+  </style>
 </div>
 
 <!-- Modal de preferencias (incluye política de cookies integrada) -->
