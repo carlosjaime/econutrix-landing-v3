@@ -224,10 +224,11 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 20px;
-    background: linear-gradient(180deg, rgba(9, 10, 37, 0.78) 0%, rgba(9, 10, 37, 0.56) 100%);
-    border-bottom: 1px solid var(--hero-border);
-    backdrop-filter: blur(8px) saturate(115%);
-    -webkit-backdrop-filter: blur(8px) saturate(115%);
+    background: linear-gradient(180deg, rgba(9, 10, 37, 0.55) 0%, rgba(9, 10, 37, 0.38) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(20px) saturate(160%) brightness(1.05);
+    -webkit-backdrop-filter: blur(20px) saturate(160%) brightness(1.05);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.18);
   }
 
   .hero__mobile-panel {
@@ -422,7 +423,7 @@ const heroBgSrc = typeof heroBgSvg === 'string' ? heroBgSvg : heroBgSvg.src;
     margin-top: 44px;
     margin-bottom: 0;
     color: var(--hero-soft);
-    font: italic 400 clamp(1rem, 1vw, 1.16rem) / 1.35 Manrope, "Segoe UI", sans-serif;
+    font: 700 clamp(1rem, 1vw, 1.16rem) / 1.35 Manrope, "Segoe UI", sans-serif;
   }
 
   .hero__menu-toggle {

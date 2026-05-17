@@ -18,13 +18,21 @@
   /* Tab underline pill animation */
   .legal-tab-indicator {
     position: absolute;
-    bottom: -1px;
+    bottom: -2px;
     left: 0;
-    height: 2px;
-    background: #694BD6;
+    height: 3px;
+    background: #B934B9;
     border-radius: 9999px;
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform;
+    z-index: 1;
+  }
+
+  /* Sin subrayado en tabs */
+  .legal-tab-btn {
+    text-decoration: none !important;
+    border: 0;
+    background: transparent;
   }
 </style>
 
@@ -36,23 +44,32 @@
   aria-labelledby="legal-modal-title"
 >
   <!-- Backdrop -->
-  <div id="legal-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  <div id="legal-modal-backdrop" class="absolute inset-0 bg-black/70"></div>
 
   <!-- Panel wrapper -->
-  <div class="relative w-full max-w-3xl">
+  <div class="relative w-full max-w-5xl">
+
+    <!-- X flotante fuera del panel -->
+    <button
+      type="button"
+      id="legal-modal-close"
+      aria-label="Cerrar"
+      class="absolute -top-4 -right-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full text-white shadow-lg transition hover:opacity-80 focus:outline-none sm:-top-5 sm:-right-5"
+      style="background-color: #B934B9;"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
 
     <!-- Contenido con overflow-hidden -->
-    <div class="flex max-h-[92vh] flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl ring-1 ring-black/5 sm:max-h-[88vh] sm:rounded-2xl">
+    <div class="flex max-h-[92vh] flex-col overflow-hidden rounded-lg bg-white shadow-2xl ring-1 ring-black/5 sm:max-h-[88vh] sm:rounded-lg">
 
       <h2 id="legal-modal-title" class="sr-only">Información legal</h2>
 
-      <!-- Drag handle (mobile only) -->
-      <div class="flex justify-center pt-3 pb-1 sm:hidden">
-        <div class="h-1 w-10 rounded-full bg-gray-300"></div>
-      </div>
-
-      <!-- Tabs + X dentro del contenedor -->
-      <div class="relative flex items-stretch border-b border-gray-200 bg-white">
+      <!-- Tabs -->
+      <div class="relative flex items-stretch bg-white" style="border-bottom: 2px solid #e5e7eb;">
         <div role="tablist" aria-label="Información legal" class="relative flex flex-1">
 
           <!-- Sliding indicator -->
@@ -66,7 +83,7 @@
             aria-selected="true"
             data-legal-tab="terms"
             data-active="true"
-            class="legal-tab-btn relative flex-1 py-4 text-sm font-semibold transition-colors duration-200 data-[active=true]:text-[#694BD6] sm:text-base"
+            class="legal-tab-btn relative flex-1 py-4 text-sm font-semibold transition-colors duration-200 data-[active=true]:text-[#B934B9] sm:text-base"
           >
             Términos de uso
           </button>
@@ -81,25 +98,9 @@
             aria-selected="false"
             data-legal-tab="privacy"
             data-active="false"
-            class="legal-tab-btn relative flex-1 py-4 text-sm font-semibold text-gray-500 transition-colors duration-200 hover:text-gray-800 data-[active=true]:text-[#694BD6] sm:text-base"
+            class="legal-tab-btn relative flex-1 py-4 text-sm font-semibold text-gray-500 transition-colors duration-200 hover:text-gray-800 data-[active=true]:text-[#B934B9] sm:text-base"
           >
             Privacidad
-          </button>
-        </div>
-
-        <!-- Botón X: círculo centrado, siempre dentro del contenedor -->
-        <div class="flex shrink-0 items-center px-3">
-          <button
-            type="button"
-            id="legal-modal-close"
-            aria-label="Cerrar"
-            class="inline-flex h-8 w-8 items-center justify-center rounded-full text-white transition hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#694BD6]"
-            style="background-color: #694BD6;"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="18" y1="6" x2="6" y2="18"/>
-              <line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
           </button>
         </div>
       </div>
@@ -165,7 +166,7 @@
             <li>Analizar métricas internas para mejorar el servicio.</li>
           </ul>
           <p class="mt-2 font-semibold">5.3 Derechos del usuario</p>
-          <p class="mt-1">En cualquier momento puedes acceder, rectificar o eliminar tus datos, solicitar su portabilidad o retirar el consentimiento. Contáctanos en: <a href="mailto:privacidad@econutrix.com" class="text-[#694BD6] underline underline-offset-2 hover:opacity-80">privacidad@econutrix.com</a></p>
+          <p class="mt-1">En cualquier momento puedes acceder, rectificar o eliminar tus datos, solicitar su portabilidad o retirar el consentimiento. Contáctanos en: <a href="mailto:privacidad@econutrix.com" class="text-[#B934B9] underline underline-offset-2 hover:opacity-80">privacidad@econutrix.com</a></p>
           <p class="mt-2 font-semibold">5.4 Conservación y eliminación</p>
           <p class="mt-1">Tus datos se conservarán mientras mantengas una cuenta activa o sea necesario para las finalidades descritas. Puedes solicitar la eliminación total en cualquier momento.</p>
         </div>
@@ -195,11 +196,11 @@
         </div>
         <div>
           <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">12. CONTACTO</h3>
-          <p class="mt-2">Para consultas, soporte o ejercer tus derechos de privacidad, puedes comunicarte con nosotros a través de: <a href="mailto:contacto@econutrix.com" class="text-[#694BD6] underline underline-offset-2 hover:opacity-80">contacto@econutrix.com</a> — <a href="https://www.econutrix.com" target="_blank" rel="noopener" class="text-[#694BD6] underline underline-offset-2 hover:opacity-80">www.econutrix.com</a></p>
+          <p class="mt-2">Para consultas, soporte o ejercer tus derechos de privacidad, puedes comunicarte con nosotros a través de: <a href="mailto:contacto@econutrix.com" class="text-[#B934B9] underline underline-offset-2 hover:opacity-80">contacto@econutrix.com</a> — <a href="https://www.econutrix.com" target="_blank" rel="noopener" class="text-[#B934B9] underline underline-offset-2 hover:opacity-80">www.econutrix.com</a></p>
           <p class="mt-2">Nos comprometemos a responder de manera transparente, ética y en un plazo razonable.</p>
         </div>
-        <div class="rounded-lg border border-[#694BD6]/20 bg-[#694BD6]/5 p-4">
-          <p class="font-semibold text-[#694BD6]">COMPROMISO ECONUTRIX</p>
+        <div class="rounded-lg border border-[#B934B9]/20 bg-[#B934B9]/5 p-4">
+          <p class="font-semibold text-[#B934B9]">COMPROMISO ECONUTRIX</p>
           <p class="mt-1 text-gray-700">EcoNutrix no es solo una herramienta tecnológica: es un compromiso con una vida más consciente, sostenible y equilibrada. Cada usuario es parte de un cambio que comienza en lo cotidiano: cuidar de uno mismo y del planeta, al mismo tiempo.</p>
         </div>
       </section>
@@ -219,7 +220,7 @@
           <ul class="mt-2 space-y-1">
             <li><strong>Titular:</strong> EcoNutrix SpA</li>
             <li><strong>Domicilio:</strong> Santiago de Chile (Chile)</li>
-            <li><strong>Correo de contacto:</strong> <a href="mailto:privacidad@econutrix.com" class="text-[#694BD6] underline underline-offset-2 hover:opacity-80">privacidad@econutrix.com</a></li>
+            <li><strong>Correo de contacto:</strong> <a href="mailto:privacidad@econutrix.com" class="text-[#B934B9] underline underline-offset-2 hover:opacity-80">privacidad@econutrix.com</a></li>
             <li><strong>Representante legal:</strong> Gerente General de EcoNutrix SpA</li>
           </ul>
         </div>
@@ -277,7 +278,7 @@
             <li>Oponerse al tratamiento en determinados casos.</li>
             <li>Solicitar la portabilidad de datos y la revocación del consentimiento en cualquier momento.</li>
           </ul>
-          <p class="mt-2">Para ejercer estos derechos, escribe a: <a href="mailto:privacidad@econutrix.com" class="text-[#694BD6] underline underline-offset-2 hover:opacity-80">privacidad@econutrix.com</a> acreditando tu identidad mediante el correo registrado o documento válido.</p>
+          <p class="mt-2">Para ejercer estos derechos, escribe a: <a href="mailto:privacidad@econutrix.com" class="text-[#B934B9] underline underline-offset-2 hover:opacity-80">privacidad@econutrix.com</a> acreditando tu identidad mediante el correo registrado o documento válido.</p>
         </div>
         <div>
           <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">8. Seguridad de la información</h3>
@@ -298,11 +299,11 @@
         </div>
         <div>
           <h3 class="text-sm font-bold tracking-wide text-gray-900 sm:text-base">11. Contacto y reclamaciones</h3>
-          <p class="mt-2">Si consideras que tus derechos no han sido respetados, puedes contactarnos directamente en: <a href="mailto:privacidad@econutrix.com" class="text-[#694BD6] underline underline-offset-2 hover:opacity-80">privacidad@econutrix.com</a></p>
+          <p class="mt-2">Si consideras que tus derechos no han sido respetados, puedes contactarnos directamente en: <a href="mailto:privacidad@econutrix.com" class="text-[#B934B9] underline underline-offset-2 hover:opacity-80">privacidad@econutrix.com</a></p>
           <p class="mt-2">También puedes recurrir ante la Agencia de Protección de Datos Personales de Chile o la autoridad de control competente en tu país.</p>
         </div>
-        <div class="rounded-lg border border-[#694BD6]/20 bg-[#694BD6]/5 p-4">
-          <p class="font-semibold text-[#694BD6]">EcoNutrix SpA</p>
+        <div class="rounded-lg border border-[#B934B9]/20 bg-[#B934B9]/5 p-4">
+          <p class="font-semibold text-[#B934B9]">EcoNutrix SpA</p>
           <p class="mt-1 italic text-gray-700">"Creemos en una tecnología al servicio de las personas, donde la privacidad es una forma de respeto y sostenibilidad".</p>
         </div>
       </section>
