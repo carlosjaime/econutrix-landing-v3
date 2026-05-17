@@ -75,7 +75,7 @@
   </div>
 </div>
 
-<!-- Modal de preferencias -->
+<!-- Modal de preferencias (incluye política de cookies integrada) -->
 <div
   id="cookie-modal"
   style="display:none; position:fixed; inset:0; z-index:10000; align-items:center; justify-content:center; padding:16px;"
@@ -85,13 +85,13 @@
 >
   <div id="cookie-modal-backdrop" style="position:absolute;inset:0;background:rgba(0,0,0,0.72);backdrop-filter:blur(6px);"></div>
 
-  <div style="position:relative;width:100%;max-width:680px;background:#1a0b2e;color:#fff;border-radius:20px;box-shadow:0 24px 64px rgba(0,0,0,0.6);overflow:hidden;">
+  <div style="position:relative;width:100%;max-width:600px;max-height:90vh;background:#1a0b2e;color:#fff;border-radius:20px;box-shadow:0 24px 64px rgba(0,0,0,0.6);display:flex;flex-direction:column;">
 
-    <!-- Header -->
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(255,255,255,0.1);padding:24px 28px 20px;">
+    <!-- Header fijo -->
+    <div style="flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 24px 18px;">
       <div>
-        <h2 id="cookie-modal-title" style="margin:0;font-size:1.25rem;font-weight:700;color:#fff;">Preferencias de cookies</h2>
-        <p style="margin:8px 0 0;font-size:0.9rem;line-height:1.5;color:rgba(255,255,255,0.7);">
+        <h2 id="cookie-modal-title" style="margin:0;font-size:1.2rem;font-weight:700;color:#fff;">Preferencias de cookies</h2>
+        <p style="margin:8px 0 0;font-size:0.875rem;line-height:1.5;color:rgba(255,255,255,0.65);">
           Elige qué categorías quieres permitir. Puedes cambiar esta configuración en cualquier momento.
         </p>
       </div>
@@ -99,9 +99,9 @@
         type="button"
         id="cookie-modal-close"
         aria-label="Cerrar"
-        style="flex-shrink:0;width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer;color:rgba(255,255,255,0.7);border-radius:8px;margin-top:-4px;"
-        onmouseover="this.style.background='rgba(255,255,255,0.1)';this.style.color='#fff'"
-        onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,0.7)'"
+        style="flex-shrink:0;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer;color:rgba(255,255,255,0.7);border-radius:8px;margin-top:-2px;"
+        onmouseover="this.style.color='#fff'"
+        onmouseout="this.style.color='rgba(255,255,255,0.7)'"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -109,52 +109,91 @@
       </button>
     </div>
 
-    <!-- Categorías -->
-    <div style="padding:20px 28px;display:flex;flex-direction:column;gap:12px;max-height:60vh;overflow-y:auto;">
+    <!-- Zona scrollable: categorías + política -->
+    <div style="flex:1;overflow-y:auto;padding:0 24px 8px;">
 
-      <!-- Necesarias -->
-      <label style="display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);border-radius:12px;padding:18px 20px;">
-        <span>
-          <span style="display:block;font-size:1rem;font-weight:700;color:#fff;">Necesarias</span>
-          <span style="display:block;margin-top:4px;font-size:0.875rem;color:rgba(255,255,255,0.65);">Imprescindibles para el funcionamiento del sitio. No se pueden desactivar.</span>
-        </span>
-        <input type="checkbox" checked disabled style="width:20px;height:20px;flex-shrink:0;cursor:not-allowed;accent-color:#694BD6;" />
-      </label>
+      <!-- Categorías -->
+      <div style="display:flex;flex-direction:column;gap:10px;">
 
-      <!-- Analíticas -->
-      <label style="display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);border-radius:12px;padding:18px 20px;cursor:pointer;">
-        <span>
-          <span style="display:block;font-size:1rem;font-weight:700;color:#fff;">Analíticas</span>
-          <span style="display:block;margin-top:4px;font-size:0.875rem;color:rgba(255,255,255,0.65);">Nos ayudan a entender cómo se usa la plataforma para mejorarla.</span>
-        </span>
-        <input type="checkbox" data-cookie-category="analytics" style="width:20px;height:20px;flex-shrink:0;cursor:pointer;accent-color:#694BD6;" />
-      </label>
+        <!-- Necesarias -->
+        <label style="display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);border-radius:14px;padding:16px 18px;">
+          <span>
+            <span style="display:block;font-size:0.975rem;font-weight:700;color:#fff;">Necesarias</span>
+            <span style="display:block;margin-top:3px;font-size:0.84rem;color:rgba(255,255,255,0.6);">Imprescindibles para el funcionamiento del sitio. No se pueden desactivar.</span>
+          </span>
+          <input type="checkbox" checked disabled style="width:20px;height:20px;flex-shrink:0;cursor:not-allowed;accent-color:#694BD6;" />
+        </label>
 
-      <!-- Marketing -->
-      <label style="display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);border-radius:12px;padding:18px 20px;cursor:pointer;">
-        <span>
-          <span style="display:block;font-size:1rem;font-weight:700;color:#fff;">Marketing</span>
-          <span style="display:block;margin-top:4px;font-size:0.875rem;color:rgba(255,255,255,0.65);">Se utilizan para mostrarte contenido y anuncios personalizados.</span>
-        </span>
-        <input type="checkbox" data-cookie-category="marketing" style="width:20px;height:20px;flex-shrink:0;cursor:pointer;accent-color:#694BD6;" />
-      </label>
+        <!-- Analíticas -->
+        <label style="display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);border-radius:14px;padding:16px 18px;cursor:pointer;">
+          <span>
+            <span style="display:block;font-size:0.975rem;font-weight:700;color:#fff;">Analíticas</span>
+            <span style="display:block;margin-top:3px;font-size:0.84rem;color:rgba(255,255,255,0.6);">Nos ayudan a entender cómo se usa la plataforma para mejorarla.</span>
+          </span>
+          <input type="checkbox" data-cookie-category="analytics" style="width:20px;height:20px;flex-shrink:0;cursor:pointer;accent-color:#694BD6;" />
+        </label>
 
-      <!-- Personalización -->
-      <label style="display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);border-radius:12px;padding:18px 20px;cursor:pointer;">
-        <span>
-          <span style="display:block;font-size:1rem;font-weight:700;color:#fff;">Personalización</span>
-          <span style="display:block;margin-top:4px;font-size:0.875rem;color:rgba(255,255,255,0.65);">Recuerdan tus preferencias para ofrecerte una experiencia adaptada.</span>
-        </span>
-        <input type="checkbox" data-cookie-category="personalization" style="width:20px;height:20px;flex-shrink:0;cursor:pointer;accent-color:#694BD6;" />
-      </label>
+        <!-- Marketing -->
+        <label style="display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);border-radius:14px;padding:16px 18px;cursor:pointer;">
+          <span>
+            <span style="display:block;font-size:0.975rem;font-weight:700;color:#fff;">Marketing</span>
+            <span style="display:block;margin-top:3px;font-size:0.84rem;color:rgba(255,255,255,0.6);">Se utilizan para mostrarte contenido y anuncios personalizados.</span>
+          </span>
+          <input type="checkbox" data-cookie-category="marketing" style="width:20px;height:20px;flex-shrink:0;cursor:pointer;accent-color:#694BD6;" />
+        </label>
+
+        <!-- Personalización -->
+        <label style="display:flex;align-items:center;justify-content:space-between;gap:16px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.06);border-radius:14px;padding:16px 18px;cursor:pointer;">
+          <span>
+            <span style="display:block;font-size:0.975rem;font-weight:700;color:#fff;">Personalización</span>
+            <span style="display:block;margin-top:3px;font-size:0.84rem;color:rgba(255,255,255,0.6);">Recuerdan tus preferencias para ofrecerte una experiencia adaptada.</span>
+          </span>
+          <input type="checkbox" data-cookie-category="personalization" style="width:20px;height:20px;flex-shrink:0;cursor:pointer;accent-color:#694BD6;" />
+        </label>
+      </div>
+
+      <!-- Política de Cookies integrada -->
+      <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);">
+        <p style="margin:0 0 14px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.4);">Política de Cookies</p>
+
+        <div style="font-size:0.84rem;line-height:1.7;color:rgba(255,255,255,0.7);">
+
+          <p style="margin:0 0 4px;font-weight:700;color:#fff;">1. ¿Qué son las cookies?</p>
+          <p style="margin:0 0 4px;">Las cookies son pequeños archivos de texto que se guardan en tu dispositivo cuando visitas un sitio web.</p>
+          <p style="margin:0 0 4px;">Sirven para recordar tus preferencias, mejorar el rendimiento del sitio y, en algunos casos, recopilar información estadística o de personalización.</p>
+          <p style="margin:0 0 16px;">Las cookies <strong style="color:#fff;">no almacenan información personal sensible</strong> como nombres, contraseñas o datos financieros.</p>
+
+          <p style="margin:0 0 4px;font-weight:700;color:#fff;">2. ¿Qué tipos de cookies usamos?</p>
+          <p style="margin:0 0 3px;"><strong style="color:rgba(255,255,255,0.9);">Cookies necesarias:</strong> Imprescindibles para el funcionamiento del sitio. No requieren consentimiento.</p>
+          <p style="margin:0 0 3px;"><strong style="color:rgba(255,255,255,0.9);">Cookies analíticas:</strong> Nos permiten entender cómo los usuarios interactúan con la plataforma para mejorarla.</p>
+          <p style="margin:0 0 3px;"><strong style="color:rgba(255,255,255,0.9);">Cookies de marketing:</strong> Utilizadas para mostrar contenido y anuncios personalizados según tus intereses.</p>
+          <p style="margin:0 0 16px;"><strong style="color:rgba(255,255,255,0.9);">Cookies de personalización:</strong> Recuerdan tus preferencias de idioma, región y configuración.</p>
+
+          <p style="margin:0 0 4px;font-weight:700;color:#fff;">3. ¿Cómo puedes gestionar las cookies?</p>
+          <p style="margin:0 0 4px;">Puedes configurar tus preferencias en cualquier momento desde este panel. También puedes gestionarlas desde tu navegador:</p>
+          <ul style="margin:4px 0 16px;padding-left:18px;">
+            <li>Chrome: Configuración → Privacidad y seguridad → Cookies</li>
+            <li>Firefox: Opciones → Privacidad y seguridad</li>
+            <li>Safari: Preferencias → Privacidad</li>
+            <li>Edge: Configuración → Privacidad, búsqueda y servicios</li>
+          </ul>
+
+          <p style="margin:0 0 4px;font-weight:700;color:#fff;">4. Cookies de terceros</p>
+          <p style="margin:0 0 16px;">Algunos servicios integrados pueden establecer sus propias cookies. Estos terceros tienen sus propias políticas de privacidad.</p>
+
+          <p style="margin:0 0 4px;font-weight:700;color:#fff;">5. Actualizaciones de esta política</p>
+          <p style="margin:0 0 4px;">EcoNutrix puede actualizar esta política en cualquier momento. La versión vigente estará siempre disponible en esta página.</p>
+          <p style="margin:0 0 8px;">Consultas: <a href="mailto:privacidad@econutrix.com" style="color:#a78bfa;text-decoration:underline;">privacidad@econutrix.com</a></p>
+        </div>
+      </div>
     </div>
 
-    <!-- Footer modal -->
-    <div style="display:flex;flex-direction:row;gap:12px;border-top:1px solid rgba(255,255,255,0.1);padding:20px 28px;">
+    <!-- Footer fijo -->
+    <div style="flex-shrink:0;display:flex;flex-direction:row;gap:12px;border-top:1px solid rgba(255,255,255,0.1);padding:16px 24px;">
       <button
         type="button"
         id="cookie-reject-all"
-        style="flex:1;padding:13px 20px;font-size:0.9rem;font-weight:500;color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,0.25);border-radius:10px;cursor:pointer;"
+        style="flex:1;padding:13px 16px;font-size:0.9rem;font-weight:500;color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,0.25);border-radius:12px;cursor:pointer;"
         onmouseover="this.style.background='rgba(255,255,255,0.08)'"
         onmouseout="this.style.background='transparent'"
       >
@@ -163,7 +202,7 @@
       <button
         type="button"
         id="cookie-save"
-        style="flex:1;padding:13px 20px;font-size:0.9rem;font-weight:700;color:#fff;background:#694BD6;border:0;border-radius:10px;cursor:pointer;"
+        style="flex:1;padding:13px 16px;font-size:0.9rem;font-weight:700;color:#fff;background:#694BD6;border:0;border-radius:12px;cursor:pointer;"
         onmouseover="this.style.background='#7a5ee0'"
         onmouseout="this.style.background='#694BD6'"
       >
@@ -173,67 +212,6 @@
   </div>
 </div>
 
-<!-- Modal Política de Cookies -->
-<div
-  id="cookie-policy-modal"
-  style="display:none; position:fixed; inset:0; z-index:10001; align-items:center; justify-content:center; padding:16px;"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="cookie-policy-title"
->
-  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.70);" id="cookie-policy-backdrop"></div>
-  <div style="position:relative;width:100%;max-width:760px;max-height:88vh;background:#fff;border-radius:8px;box-shadow:0 24px 64px rgba(0,0,0,0.5);overflow:hidden;display:flex;flex-direction:column;">
-
-    <!-- Header -->
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:2px solid #B934B9;">
-      <h2 id="cookie-policy-title" style="margin:0;font-size:1.15rem;font-weight:700;color:#1a1a2e;">Política de Cookies</h2>
-      <button
-        type="button"
-        id="cookie-policy-close"
-        aria-label="Cerrar"
-        style="width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;background:#B934B9;border:0;border-radius:50%;cursor:pointer;color:#fff;flex-shrink:0;"
-        onmouseover="this.style.background='#a020a0'"
-        onmouseout="this.style.background='#B934B9'"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Contenido -->
-    <div style="overflow-y:auto;padding:24px 28px;font-size:0.9rem;line-height:1.7;color:#374151;">
-
-      <h3 style="font-size:0.95rem;font-weight:700;color:#1a1a2e;margin:0 0 8px;">1. ¿Qué son las cookies?</h3>
-      <p style="margin:0 0 6px;">Las cookies son pequeños archivos de texto que se guardan en tu dispositivo (ordenador, tablet o smartphone) cuando visitas un sitio web.</p>
-      <p style="margin:0 0 6px;">Sirven para recordar tus preferencias, mejorar el rendimiento del sitio y, en algunos casos, recopilar información estadística o de personalización.</p>
-      <p style="margin:0 0 20px;">Las cookies <strong>no almacenan información personal sensible</strong> como nombres, contraseñas o datos financieros.</p>
-
-      <h3 style="font-size:0.95rem;font-weight:700;color:#1a1a2e;margin:0 0 8px;">2. ¿Qué tipos de cookies usamos?</h3>
-      <p style="margin:0 0 6px;"><strong>Cookies necesarias:</strong> Imprescindibles para el funcionamiento del sitio. No requieren consentimiento.</p>
-      <p style="margin:0 0 6px;"><strong>Cookies analíticas:</strong> Nos permiten entender cómo los usuarios interactúan con la plataforma para mejorarla (p. ej. páginas visitadas, tiempo de sesión).</p>
-      <p style="margin:0 0 6px;"><strong>Cookies de marketing:</strong> Utilizadas para mostrar contenido y anuncios personalizados según tus intereses.</p>
-      <p style="margin:0 0 20px;"><strong>Cookies de personalización:</strong> Recuerdan tus preferencias de idioma, región y configuración para ofrecerte una experiencia adaptada.</p>
-
-      <h3 style="font-size:0.95rem;font-weight:700;color:#1a1a2e;margin:0 0 8px;">3. ¿Cómo puedes gestionar las cookies?</h3>
-      <p style="margin:0 0 6px;">Puedes configurar tus preferencias de cookies en cualquier momento a través del panel de configuración disponible en el banner de cookies de esta página.</p>
-      <p style="margin:0 0 6px;">También puedes gestionar o eliminar las cookies desde la configuración de tu navegador:</p>
-      <ul style="margin:6px 0 20px;padding-left:20px;">
-        <li>Chrome: Configuración → Privacidad y seguridad → Cookies</li>
-        <li>Firefox: Opciones → Privacidad y seguridad</li>
-        <li>Safari: Preferencias → Privacidad</li>
-        <li>Edge: Configuración → Privacidad, búsqueda y servicios</li>
-      </ul>
-
-      <h3 style="font-size:0.95rem;font-weight:700;color:#1a1a2e;margin:0 0 8px;">4. Cookies de terceros</h3>
-      <p style="margin:0 0 20px;">Algunos servicios integrados en nuestra plataforma pueden establecer sus propias cookies (p. ej. herramientas de análisis o redes de publicidad). Estos terceros tienen sus propias políticas de privacidad.</p>
-
-      <h3 style="font-size:0.95rem;font-weight:700;color:#1a1a2e;margin:0 0 8px;">5. Actualizaciones de esta política</h3>
-      <p style="margin:0 0 6px;">EcoNutrix puede actualizar esta Política de Cookies en cualquier momento. La versión vigente siempre estará disponible en esta página con la fecha de última modificación.</p>
-      <p style="margin:0;">Para cualquier consulta, escríbenos a <a href="mailto:privacidad@econutrix.com" style="color:#B934B9;text-decoration:underline;">privacidad@econutrix.com</a>.</p>
-    </div>
-  </div>
-</div>
 
 <script is:inline>
   (function () {
@@ -300,6 +278,7 @@
       save({ value:'dismissed', categories:{ necessary:true } })
     );
     document.getElementById('cookie-configure')?.addEventListener('click', openModal);
+    document.getElementById('cookie-policy-open')?.addEventListener('click', openModal);
     document.getElementById('cookie-modal-close')?.addEventListener('click', closeModal);
     document.getElementById('cookie-modal-backdrop')?.addEventListener('click', closeModal);
     document.getElementById('cookie-reject-all')?.addEventListener('click', () => {
@@ -311,17 +290,6 @@
     );
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.style.display !== 'none') closeModal();
-    });
-
-    /* ── Modal política de cookies ── */
-    const policyModal = document.getElementById('cookie-policy-modal');
-    const openPolicy = () => { if (policyModal) { policyModal.style.display = 'flex'; document.body.style.overflow = 'hidden'; } };
-    const closePolicy = () => { if (policyModal) { policyModal.style.display = 'none'; document.body.style.overflow = ''; } };
-    document.getElementById('cookie-policy-open')?.addEventListener('click', openPolicy);
-    document.getElementById('cookie-policy-close')?.addEventListener('click', closePolicy);
-    document.getElementById('cookie-policy-backdrop')?.addEventListener('click', closePolicy);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && policyModal?.style.display !== 'none') closePolicy();
     });
   })();
 </script>
