@@ -1,0 +1,256 @@
+---
+// Cookie consent banner + preferences modal
+---
+
+<!-- Banner -->
+<div
+  id="cookie-banner"
+  class="fixed inset-x-0 bottom-4 z-[100] hidden px-4 sm:bottom-6 sm:px-6"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Aviso de cookies"
+>
+  <div class="mx-auto flex max-w-[1480px] flex-col gap-4 border-t-2 border-purple-500 bg-black px-5 py-5 text-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] ring-1 ring-white/5 sm:px-6 md:flex-row md:items-center md:justify-between md:gap-6 md:py-6 lg:px-10">
+    <div class="text-sm leading-relaxed text-white/90 md:max-w-3xl">
+      <p>
+        Utilizamos cookies para mejorar tu experiencia, analizar el uso de la plataforma y ofrecer contenido personalizado.
+      </p>
+      <a
+        href="/politica-de-cookies"
+        class="mt-1 inline-block text-purple-300 underline decoration-purple-300/70 underline-offset-2 hover:text-purple-200"
+      >
+        “Más información en nuestra Política de Cookies”
+      </a>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-3">
+      <button
+        type="button"
+        id="cookie-configure"
+        class="rounded-md border border-purple-400 px-4 py-2 text-sm font-medium text-white transition hover:bg-purple-400/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300"
+      >
+        Configurar cookies
+      </button>
+      <button
+        type="button"
+        id="cookie-accept"
+        class="rounded-md bg-purple-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-purple-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300"
+      >
+        Aceptar todo
+      </button>
+      <button
+        type="button"
+        id="cookie-close"
+        aria-label="Cerrar aviso de cookies"
+        class="ml-1 inline-flex h-9 w-9 items-center justify-center rounded-md text-white/80 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Preferences modal -->
+<div
+  id="cookie-modal"
+  class="fixed inset-0 z-[110] hidden items-center justify-center p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cookie-modal-title"
+>
+  <div id="cookie-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+  <div class="relative w-full max-w-lg overflow-hidden rounded-2xl bg-[#1a0b2e] text-white shadow-2xl ring-1 ring-white/10">
+    <div class="flex items-start justify-between gap-4 border-b border-white/10 px-6 py-5">
+      <div>
+        <h2 id="cookie-modal-title" class="text-lg font-semibold">Preferencias de cookies</h2>
+        <p class="mt-1 text-sm text-white/70">
+          Elige qué categorías quieres permitir. Puedes cambiar esta configuración en cualquier momento.
+        </p>
+      </div>
+      <button
+        type="button"
+        id="cookie-modal-close"
+        aria-label="Cerrar"
+        class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-white/80 transition hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="max-h-[60vh] space-y-4 overflow-y-auto px-6 py-5">
+      <!-- Necessary -->
+      <label class="flex items-start justify-between gap-4 rounded-lg border border-white/10 bg-white/5 p-4">
+        <span class="flex-1">
+          <span class="block text-sm font-semibold text-white">Necesarias</span>
+          <span class="mt-1 block text-xs text-white/70">
+            Imprescindibles para el funcionamiento del sitio. No se pueden desactivar.
+          </span>
+        </span>
+        <input
+          type="checkbox"
+          checked
+          disabled
+          class="mt-1 h-4 w-4 cursor-not-allowed rounded border-white/20 bg-white/10 accent-purple-500"
+        />
+      </label>
+
+      <!-- Analytics -->
+      <label class="flex items-start justify-between gap-4 rounded-lg border border-white/10 bg-white/5 p-4">
+        <span class="flex-1">
+          <span class="block text-sm font-semibold text-white">Analíticas</span>
+          <span class="mt-1 block text-xs text-white/70">
+            Nos ayudan a entender cómo se usa la plataforma para mejorarla.
+          </span>
+        </span>
+        <input
+          type="checkbox"
+          data-cookie-category="analytics"
+          class="mt-1 h-4 w-4 cursor-pointer rounded border-white/20 bg-white/10 accent-purple-500"
+        />
+      </label>
+
+      <!-- Marketing -->
+      <label class="flex items-start justify-between gap-4 rounded-lg border border-white/10 bg-white/5 p-4">
+        <span class="flex-1">
+          <span class="block text-sm font-semibold text-white">Marketing</span>
+          <span class="mt-1 block text-xs text-white/70">
+            Se utilizan para mostrarte contenido y anuncios personalizados.
+          </span>
+        </span>
+        <input
+          type="checkbox"
+          data-cookie-category="marketing"
+          class="mt-1 h-4 w-4 cursor-pointer rounded border-white/20 bg-white/10 accent-purple-500"
+        />
+      </label>
+
+      <!-- Personalization -->
+      <label class="flex items-start justify-between gap-4 rounded-lg border border-white/10 bg-white/5 p-4">
+        <span class="flex-1">
+          <span class="block text-sm font-semibold text-white">Personalización</span>
+          <span class="mt-1 block text-xs text-white/70">
+            Recuerdan tus preferencias para ofrecerte una experiencia adaptada.
+          </span>
+        </span>
+        <input
+          type="checkbox"
+          data-cookie-category="personalization"
+          class="mt-1 h-4 w-4 cursor-pointer rounded border-white/20 bg-white/10 accent-purple-500"
+        />
+      </label>
+    </div>
+
+    <div class="flex flex-col-reverse gap-3 border-t border-white/10 bg-black/20 px-6 py-4 sm:flex-row sm:justify-end">
+      <button
+        type="button"
+        id="cookie-reject-all"
+        class="rounded-md border border-white/20 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300"
+      >
+        Rechazar opcionales
+      </button>
+      <button
+        type="button"
+        id="cookie-save"
+        class="rounded-md bg-purple-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-purple-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300"
+      >
+        Guardar preferencias
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const STORAGE_KEY = 'econutrix:cookie-consent';
+    const banner = document.getElementById('cookie-banner');
+    const modal = document.getElementById('cookie-modal');
+    if (!banner || !modal) return;
+
+    const checkboxes = modal.querySelectorAll('input[data-cookie-category]');
+
+    function readStored() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (_) {
+        return null;
+      }
+    }
+
+    function save(consent) {
+      try {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({ ...consent, ts: Date.now() })
+        );
+      } catch (_) {}
+      banner.classList.add('hidden');
+      closeModal();
+    }
+
+    function openModal() {
+      const stored = readStored();
+      checkboxes.forEach((cb) => {
+        const key = cb.getAttribute('data-cookie-category');
+        cb.checked = stored && stored.categories ? !!stored.categories[key] : false;
+      });
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function collectCategories() {
+      const categories = { necessary: true };
+      checkboxes.forEach((cb) => {
+        const key = cb.getAttribute('data-cookie-category');
+        if (key) categories[key] = cb.checked;
+      });
+      return categories;
+    }
+
+    if (!readStored()) {
+      banner.classList.remove('hidden');
+    }
+
+    document.getElementById('cookie-accept')?.addEventListener('click', () => {
+      save({
+        value: 'accepted-all',
+        categories: { necessary: true, analytics: true, marketing: true, personalization: true },
+      });
+    });
+
+    document.getElementById('cookie-close')?.addEventListener('click', () => {
+      save({ value: 'dismissed', categories: { necessary: true } });
+    });
+
+    document.getElementById('cookie-configure')?.addEventListener('click', openModal);
+    document.getElementById('cookie-modal-close')?.addEventListener('click', closeModal);
+    document.getElementById('cookie-modal-backdrop')?.addEventListener('click', closeModal);
+
+    document.getElementById('cookie-reject-all')?.addEventListener('click', () => {
+      checkboxes.forEach((cb) => (cb.checked = false));
+      save({ value: 'rejected-optional', categories: collectCategories() });
+    });
+
+    document.getElementById('cookie-save')?.addEventListener('click', () => {
+      save({ value: 'custom', categories: collectCategories() });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
+  })();
+</script>

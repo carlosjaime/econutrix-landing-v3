@@ -1,0 +1,223 @@
+---
+// Legal modal — tabs: Términos de uso / Política de privacidad
+---
+
+<div
+  id="legal-modal"
+  class="fixed inset-0 z-[120] hidden items-center justify-center p-4 sm:p-6"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="legal-modal-title"
+>
+  <div id="legal-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+
+  <div class="relative w-full max-w-3xl">
+    <!-- Close button -->
+    <button
+      type="button"
+      id="legal-modal-close"
+      aria-label="Cerrar"
+      class="absolute -top-3 right-2 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-fuchsia-500 text-white shadow-lg ring-2 ring-[#0a0a1a] transition hover:bg-fuchsia-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300 sm:h-10 sm:w-10"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5">
+      <h2 id="legal-modal-title" class="sr-only">Información legal</h2>
+
+      <!-- Tabs -->
+      <div role="tablist" aria-label="Información legal" class="flex border-b border-gray-200 bg-white">
+        <button
+          type="button"
+          role="tab"
+          id="legal-tab-terms"
+          aria-controls="legal-panel-terms"
+          aria-selected="true"
+          data-legal-tab="terms"
+          class="flex-1 px-3 py-3 text-sm font-semibold leading-tight transition-colors data-[active=true]:border-b-2 data-[active=true]:border-fuchsia-500 data-[active=true]:text-fuchsia-600 sm:px-6 sm:py-4 sm:text-base"
+          data-active="true"
+        >
+          Términos de uso
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="legal-tab-privacy"
+          aria-controls="legal-panel-privacy"
+          aria-selected="false"
+          data-legal-tab="privacy"
+          class="flex-1 border-l border-gray-200 px-3 py-3 text-sm font-semibold leading-tight text-gray-700 transition-colors hover:text-gray-900 data-[active=true]:border-b-2 data-[active=true]:border-fuchsia-500 data-[active=true]:text-fuchsia-600 sm:px-6 sm:py-4 sm:text-base"
+          data-active="false"
+        >
+          Política de privacidad
+        </button>
+      </div>
+
+      <!-- Panels -->
+      <div class="max-h-[70vh] overflow-y-auto bg-white px-5 py-5 text-gray-800 sm:max-h-[75vh] sm:px-8 sm:py-7">
+        <!-- Terms -->
+        <section
+          id="legal-panel-terms"
+          role="tabpanel"
+          aria-labelledby="legal-tab-terms"
+          data-legal-panel="terms"
+          class="space-y-5 text-[0.95rem] leading-relaxed sm:text-base"
+        >
+          <div>
+            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">1. ACEPTACIÓN DE LOS TÉRMINOS</h3>
+            <p class="mt-2">
+              El acceso, descarga o uso de la aplicación EcoNutrix (en adelante, “la App” o “el Servicio”) implica la aceptación plena y sin reservas de los presentes Términos y Condiciones de Uso.
+            </p>
+            <p class="mt-2">
+              Si no estás de acuerdo con alguno de los puntos aquí expuestos, te solicitamos no utilizar la App ni sus servicios asociados. EcoNutrix se reserva el derecho de modificar, actualizar o ampliar estos términos en cualquier momento, notificándolo mediante los canales oficiales o dentro de la propia App. Las modificaciones entrarán en vigencia desde su publicación.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">2. DESCRIPCIÓN DEL SERVICIO</h3>
+            <p class="mt-2">
+              EcoNutrix es una plataforma digital que utiliza inteligencia artificial y algoritmos nutricionales para:
+            </p>
+            <ul class="mt-2 list-disc space-y-1 pl-6">
+              <li>Sugerir recetas y planes de comidas personalizados.</li>
+              <li>Generar listas de compras inteligentes según tus preferencias.</li>
+              <li>Ofrecer recomendaciones nutricionales orientativas.</li>
+            </ul>
+            <p class="mt-2">
+              El Servicio tiene fines informativos y de apoyo, y no sustituye la consulta con profesionales de la salud o nutrición.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">3. USO PERMITIDO</h3>
+            <p class="mt-2">
+              Te comprometes a utilizar EcoNutrix de forma lícita, respetando estos términos, la legislación vigente y los derechos de terceros. Queda prohibido el uso de la App para fines fraudulentos, ofensivos o que afecten su correcto funcionamiento.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">4. PROPIEDAD INTELECTUAL</h3>
+            <p class="mt-2">
+              Todos los contenidos, marcas, logotipos y desarrollos asociados a EcoNutrix son propiedad de EcoNutrix SpA o de sus licenciantes y están protegidos por la normativa de propiedad intelectual.
+            </p>
+          </div>
+        </section>
+
+        <!-- Privacy -->
+        <section
+          id="legal-panel-privacy"
+          role="tabpanel"
+          aria-labelledby="legal-tab-privacy"
+          data-legal-panel="privacy"
+          class="hidden space-y-5 text-[0.95rem] leading-relaxed sm:text-base"
+        >
+          <p>
+            En EcoNutrix, la privacidad de nuestros usuarios es una prioridad esencial. Esta Política de Privacidad explica cómo recopilamos, utilizamos, almacenamos y protegemos tu información personal al usar nuestra aplicación web, móvil o cualquier servicio asociado al dominio <strong>econutrix.com.</strong>
+          </p>
+          <p>
+            Al registrarte, acceder o utilizar EcoNutrix, aceptas esta Política de Privacidad y nos autorizas a tratar tus datos conforme a lo aquí descrito.
+          </p>
+
+          <div>
+            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">1. IDENTIDAD DEL RESPONSABLE DEL TRATAMIENTO</h3>
+            <ul class="mt-2 space-y-1">
+              <li><strong>Titular:</strong> EcoNutrix SpA</li>
+              <li><strong>Domicilio:</strong> Santiago de Chile (Chile)</li>
+              <li>
+                <strong>Correo de contacto:</strong>
+                <a href="mailto:privacidad@econutrix.com" class="text-fuchsia-600 underline underline-offset-2 hover:text-fuchsia-500">privacidad@econutrix.com</a>
+              </li>
+              <li><strong>Representante legal:</strong> Gerente General de EcoNutrix SpA</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">2. DATOS QUE RECOPILAMOS</h3>
+            <p class="mt-2">Para ofrecer una experiencia personalizada, podemos recopilar:</p>
+            <ul class="mt-2 list-disc space-y-1 pl-6">
+              <li>Datos de registro: nombre, correo electrónico, contraseña.</li>
+              <li>Datos nutricionales y de preferencias alimentarias.</li>
+              <li>Datos de uso de la plataforma y dispositivo.</li>
+              <li>Cookies y tecnologías similares (ver Política de Cookies).</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">3. FINALIDAD DEL TRATAMIENTO</h3>
+            <p class="mt-2">
+              Tus datos se utilizan para prestar el servicio, personalizar recomendaciones, mejorar la plataforma y cumplir con obligaciones legales aplicables.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-bold tracking-wide text-gray-900 sm:text-lg">4. DERECHOS DEL USUARIO</h3>
+            <p class="mt-2">
+              Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, cancelación y oposición escribiendo a
+              <a href="mailto:privacidad@econutrix.com" class="text-fuchsia-600 underline underline-offset-2 hover:text-fuchsia-500">privacidad@econutrix.com</a>.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const modal = document.getElementById('legal-modal');
+    if (!modal) return;
+
+    const tabs = modal.querySelectorAll('[data-legal-tab]');
+    const panels = modal.querySelectorAll('[data-legal-panel]');
+
+    function activate(tabKey) {
+      tabs.forEach((t) => {
+        const active = t.getAttribute('data-legal-tab') === tabKey;
+        t.setAttribute('data-active', String(active));
+        t.setAttribute('aria-selected', String(active));
+      });
+      panels.forEach((p) => {
+        const active = p.getAttribute('data-legal-panel') === tabKey;
+        p.classList.toggle('hidden', !active);
+      });
+    }
+
+    function open(tabKey) {
+      activate(tabKey || 'terms');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    tabs.forEach((t) => {
+      t.addEventListener('click', () => activate(t.getAttribute('data-legal-tab')));
+    });
+
+    document.getElementById('legal-modal-close')?.addEventListener('click', close);
+    document.getElementById('legal-modal-backdrop')?.addEventListener('click', close);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) close();
+    });
+
+    // Open via [data-open-legal="terms|privacy"] attributes anywhere on the page
+    document.addEventListener('click', (e) => {
+      const target = e.target instanceof Element ? e.target.closest('[data-open-legal]') : null;
+      if (!target) return;
+      e.preventDefault();
+      open(target.getAttribute('data-open-legal') || 'terms');
+    });
+
+    // Expose programmatic API
+    window.EcoNutrixLegalModal = { open, close };
+  })();
+</script>

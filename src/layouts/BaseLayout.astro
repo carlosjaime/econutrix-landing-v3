@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import CookieBanner from '../components/CookieBanner.astro';
+import LegalModal from '../components/LegalModal.astro';
 
 interface Props {
   title: string;
@@ -49,5 +51,7 @@ const { title, description, canonicalURL, ogImageURL, structuredData } = Astro.p
 
   <body class="bg-white text-gray-900 antialiased">
     <slot />
+    <CookieBanner />
+    <LegalModal />
   </body>
 </html>
